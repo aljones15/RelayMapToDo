@@ -1,0 +1,14 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <div id='app' />
+    <script type="text/javascript">     
+      // Force `fetch` polyfill to workaround Chrome not displaying request body
+      // in developer tools for the native `fetch`.
+     self.fetch = null;
+   </script>
+   <script src="http://localhost:3000/webpack-dev-server.js"></script>
+    <script src='src/index.js'></script>
+  </body>
+</html>
