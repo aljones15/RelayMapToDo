@@ -1,7 +1,74 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ToDoList Should match a snapshot 1`] = `
-<ul>
-  To Do!
+<ul
+  className="ToDoUl"
+  style={
+    Object {
+      "display": "flex",
+      "flexDirection": "column",
+      "flexGrow": 1,
+      "flexShrink": 1,
+      "padding": "0px",
+    }
+  }
+>
+  <li
+    style={
+      Object {
+        "color": "#FFFFFF",
+        "display": "flex",
+        "flexGrow": 1,
+        "flexShrink": 1,
+      }
+    }
+  >
+    Know Something to do here?
+  </li>
+  <li
+    style={
+      Object {
+        "backgroundColor": "rgba(50,50,50,0.5)",
+        "color": "#FFFFFF",
+        "display": "flex",
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "maxWidth": "100%",
+        "padding": "5px",
+      }
+    }
+  >
+    To Do!
+  </li>
+  <li
+    style={
+      Object {
+        "backgroundColor": "rgba(50,50,50,0.5)",
+        "color": "#FFFFFF",
+        "display": "flex",
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "maxWidth": "100%",
+        "padding": "5px",
+      }
+    }
+  >
+    To Do!
+  </li>
+  <li
+    style={
+      Object {
+        "backgroundColor": "rgba(50,50,50,0.5)",
+        "color": "#FFFFFF",
+        "display": "flex",
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "maxWidth": "100%",
+        "padding": "5px",
+      }
+    }
+  >
+    To Do!
+  </li>
 </ul>
 `;
