@@ -16,10 +16,12 @@ import {
 const {nodeInterface, nodeField} = nodeDefinitions(
   (globalId) => {
     const {type, id} = fromGlobalId(globalId);
-    if(type === 'City'){
+    if(type === 'Cities'){
       return FetchCities();
     } else if (type === 'ToDo'){
       return FetchToDos(id);
+    } else if (type === 'City'){
+       return FetchCity(id);
     } else {
       console.error('Invalid Query Type');
       return {};
