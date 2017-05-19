@@ -35,13 +35,13 @@ const ToDos = [];
  * returns todos by city id
  * @ param {Number} city
  */
-export function FetchToDos(city){
-  return ToDos.filter((td) => td.city_id === city);
+export function FetchToDos(city_id){
+  return ToDos.filter((td) => td.city_id === city_id);
 }
 
 /***
  * add a to do posted from relay to the in memory db
- * @ param {Ocject} a to do class
+ * @ param {Object} a to do class
  */
 export function AddToDo(to_do){
   ToDos.push(to_do);
@@ -78,4 +78,12 @@ export function DislikeToDo(id){
  */
 export function FetchCities(){
   return Cities;
+}
+
+/***
+* fetch a single city
+* @ param {Number} id
+*/
+export function FetchCity(id){
+  return Cities.filter((c) => c.id === id)[0] || null;
 }

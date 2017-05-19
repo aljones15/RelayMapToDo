@@ -5,7 +5,8 @@ import {
   AddToDo,
   LikeToDo,
   DislikeToDo,
-  FetchCities
+  FetchCities,
+  FetchCity
 } from './database';
 
 /***
