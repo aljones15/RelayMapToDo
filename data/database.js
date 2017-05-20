@@ -52,7 +52,7 @@ export function AddToDo(to_do){
  * @ param {Number} id
  */
 export function LikeToDo(id){
-  const td = ToDos.filter((td) => td.id === id)[0] || false;
+  const td = ToDos.find((td) => td.id === id);
   if(!td){
     return false;
   }
@@ -65,7 +65,7 @@ export function LikeToDo(id){
  * @ param {Number} id
  */
 export function DislikeToDo(id){
-  const td = ToDos.filter((td) => td.id === id)[0] || false;
+  const td = ToDos.find((td) => td.id === id);
   if(!td){
     return false;
   }
@@ -85,5 +85,5 @@ export function FetchCities(){
 * @ param {Number} id
 */
 export function FetchCity(id){
-  return Cities.filter((c) => c.id === id)[0] || null;
+  return Cities.find((c) => c.id === id);
 }
