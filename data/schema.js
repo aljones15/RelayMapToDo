@@ -17,12 +17,13 @@ const {nodeInterface, nodeField} = nodeDefinitions(
   (globalId) => {
     const {type, id} = fromGlobalId(globalId);
     if(type === 'City'){
-      return FetchCities();
+      return FetchCity(id);
     } else if (type === 'ToDo'){
       return FetchToDos(id);
+    } else if (type === 'Cities') {
+      return FetchCities();
     } else {
-      console.error('Invalid Query Type');
-      return {};
+      return null;
     }
   },
   (obj) => {
@@ -30,19 +31,24 @@ const {nodeInterface, nodeField} = nodeDefinitions(
       return cityType;
     } else if (obj instanceof ToDo) {
       return toDoType;
+    } else if(obj instanceof Cities){
+      return citiesType;
     } else {
-      console.error('Unknown Type or Class');
       return null;
     }
   }
 );
 
-/*
+const citiesType = new GraphQLObjectType({
+  name: 'Cities',
+  description: 'An array of Cities'
+});
+
 const cityType = new GraphQLObjectType({
   name: 'City',
   description: 'A city to be used on the map',
   fields: () => ({
-    id: globalIdField('City'),
-    lat: {}
+    id: globalIdField('City');
+    tdods: FetchToDos(id);
   })
-}); */
+});
