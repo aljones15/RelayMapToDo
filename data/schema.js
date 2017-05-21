@@ -97,14 +97,14 @@ const ToDo = new GraphQLObjectType({
 });
 
 const Mutation = new GraphQLObjectType({
-  name: "ToDoMutations",
-  description: "Mutations for the To Do List",
+  name: 'ToDoMutations',
+  description: 'Mutations for the To Do List',
   fields: () => ({
     createToDo: {
       type: ToDo,
       args: {
-        city_id: {type: GraphQLNonNull(GraphQLInt)},
-        text: {type: GraphQLNonNull(GraphQLString)}
+        city_id: {type: new GraphQLNonNull(GraphQLInt)},
+        text: {type: new GraphQLNonNull(GraphQLString)}
       },
       resolve: (source, args) => {
         return AddToDo(args);
@@ -113,7 +113,7 @@ const Mutation = new GraphQLObjectType({
   })
 });
 
-const Schema = new GraphQLSchema({
+export const Schema = new GraphQLSchema({
   query: Root,
   mutation: Mutation
 });
