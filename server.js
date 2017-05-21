@@ -44,6 +44,26 @@ function startAppServer(callback) {
   });
 }
 
+function startGraphQLServer(callback) {
+  // Expose a GraphQL endpoint
+  clean('./data/schema');
+  const {Schema} = require('./data/schema');
+  const graphQLApp = express();
+  graphQLApp.use('/', graphQLHTTP({
+    graphiql: true,
+    pretty: true,
+    schema: Schema,
+  }));
+  graphQLServer = graphQLApp.listen(GRAPHQL_PORT, () => {
+    console.log(
+      `GraphQL server is now running on http://localhost:${GRAPHQL_PORT}`
+    );
+    if (callback) {
+      callback();
+    }
+  });
+}
+
 function startServers(callback) {
   // Shut down the servers
   if (appServer) {
@@ -63,7 +83,7 @@ function startServers(callback) {
         callback();
       }
     }
-    //startGraphQLServer(handleTaskDone);
+    startGraphQLServer(handleTaskDone);
     startAppServer(handleTaskDone);
   });
 }

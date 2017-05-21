@@ -1,6 +1,4 @@
-import {
-  City,
-  ToDo,
+import { 
   FetchToDos,
   AddToDo,
   LikeToDo,
@@ -24,6 +22,8 @@ import {
 * graph QL function that maps Queries to functions that fetch the correct obj
 * function return is destructured to all us acces to the interface ani fields
 */
+
+/*
 const {nodeInterface, nodeField} = nodeDefinitions(
   (globalId) => {
     const {type, id} = fromGlobalId(globalId);
@@ -49,7 +49,7 @@ const {nodeInterface, nodeField} = nodeDefinitions(
     }
   }
 );
-
+*/
 const Root = new GraphQLObjectType({
   name: 'RootQuery',
   description: 'An array of Cities',
@@ -57,7 +57,7 @@ const Root = new GraphQLObjectType({
     cities: { 
       type: new GraphQLList(City),
       resolve: () => FetchCities()
-    }
+    },
     city: {
       type: City,
       args: {
@@ -76,7 +76,7 @@ const City = new GraphQLObjectType({
     lat: {type: GraphQLFloat},
     lng: {type: GraphQLFloat},
     todo:{ 
-      type: new GrapQLList(ToDo),
+      type: new GraphQLList(ToDo),
       resolve: (city) => FetchToDos(city.id)
     }
   })
@@ -89,7 +89,7 @@ const ToDo = new GraphQLObjectType({
     city_id: {type: new GraphQLNonNull(GraphQLInt)},
     text: {type: GraphQLString},
     likes: {
-      type: GraphQLInt
+      type: GraphQLInt,
       resolve: (todo) => todo.likes || 0
     },
     id: {type: new GraphQLNonNull(GraphQLInt)}
