@@ -96,8 +96,26 @@ const ToDo = new GraphQLObjectType({
   })
 });
 
+const Mutation = new GraphQLObjectType({
+  name: "ToDoMutations",
+  description: "Mutations for the To Do List",
+  fields: () => ({
+    createToDo: {
+      type: ToDo,
+      args: {
+        city_id: {type: GraphQLNonNull(GraphQLInt)},
+        text: {type: GraphQLNonNull(GraphQLString)}
+      },
+      resolve: (source, args) => {
+        return AddToDo(args);
+      }
+    }
+  })
+});
+
 const Schema = new GraphQLSchema({
-  query: Root
+  query: Root,
+  mutation: Mutation
 });
 
 export default Schema;

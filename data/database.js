@@ -43,8 +43,11 @@ export function FetchToDos(city_id){
  * add a to do posted from relay to the in memory db
  * @ param {Object} a to do class
  */
-export function AddToDo(to_do){
-  ToDos.push(to_do);
+export function AddToDo({city_id, text}){
+  let id = ToDos.length + 1;
+  let todo = new ToDo(city_id, text, id);
+  ToDos.push(todo);
+  return todo;
 }
 
 /***
