@@ -47,8 +47,7 @@ function startAppServer(callback) {
 function startGraphQLServer(callback) {
   // Expose a GraphQL endpoint
   clean('./data/schema');
-  const {Schema} = require('./data/schema');
-  console.log(Schema);
+  const { Schema } = require('./data/schema');
   const graphQLApp = express();
   graphQLApp.use('/', graphQLHTTP({
     graphiql: true,
