@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapContainer } from './style';
+import MapContainer from './style';
 import GoogleMapReact from 'google-map-react';
 import City from '../city/index.jsx';
 

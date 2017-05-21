@@ -1,5 +1,5 @@
 import React from 'react';
-import {ToDoStyle} from './style';
+import ToDoStyle from './style';
 
 const ToDo = (props) => {
   return(

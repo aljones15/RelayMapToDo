@@ -1,11 +1,11 @@
 const K_WIDTH = 40;
 const K_HEIGHT = 40;
 
-//initially any map object has left top corner at lat lng coordinates
-//it's on you to set object origin to 0,0 coordinates
+// initially any map object has left top corner at lat lng coordinates
+// it's on you to set object origin to 0,0 coordinates
 
 export const IconStyle = {
-    position: 'absolute',
+  position: 'absolute',
   width: K_WIDTH,
   height: K_HEIGHT,
   left: -K_WIDTH / 2,
@@ -27,33 +27,32 @@ export const ListStyle = {
   height: K_HEIGHT * 10,
   left: (-K_WIDTH * 10) / 2,
   top: (-K_HEIGHT * 10) / 2,
-  backgroundColor: 'rgba(0,0,0,0.2)'
+  backgroundColor: 'rgba(0,0,0,0.2)',
 };
 
 export const ToDoStyle = {
   container: {
     display: 'flex',
     flexGrow: 1,
-    flexGrow: 1,
     flexDirection: 'column',
-    position: 'relative', 
-    height: '100%', 
+    position: 'relative',
+    height: '100%',
     width: '100%',
-    backgroundColor: 'rgba(0,0,0,0.5)'
- },
- closeBar: {
-   display: 'flex', 
-   flexGrow: 1, 
-   flexShrink: 1, 
-   height: '1rem', 
-   maxHeight: '2rem',
-   width: K_WIDTH * 10,
-   maxWidth: '100%',
-   backgroundColor: 'rgba(10,10,10,0.4)',
-   cursor: 'context-menu',
-   fontSize: '1rem',
-   color: '#FFFFFF',
-   alignItems: 'center',
-   justifyContent: 'center'
- }
+    backgroundColor: 'rgba(0,0,0,0.5)',
+  },
+  closeBar: {
+    display: 'flex',
+    flexGrow: 1,
+    flexShrink: 1,
+    height: '1rem',
+    maxHeight: '2rem',
+    width: K_WIDTH * 10,
+    maxWidth: '100%',
+    backgroundColor: 'rgba(10,10,10,0.4)',
+    cursor: 'context-menu',
+    fontSize: '1rem',
+    color: '#FFFFFF',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 };
