@@ -37,3 +37,4 @@ class Map extends React.Component {
 Map.defaultProps = { center: {lat: 13.7563, lng: 100.5018}, zoom: 7 };
 
 export default Map;
+

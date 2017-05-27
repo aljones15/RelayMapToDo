@@ -1,9 +1,11 @@
 import Relay from 'react-relay';
 
-export default class extends Relay.Route {
-  static queries = {
+const cityRoute = {
+  queries: {
     cities: () => Relay.QL`query { cities }`,
     city: () => Relay.QL`query { city }`
-  };
-  static routeName = 'CityRoute';
-}
+  },
+  name: 'CityRoute'
+};
+
+export default cityRoute;

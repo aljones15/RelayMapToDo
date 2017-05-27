@@ -7,7 +7,9 @@
     "start": "babel-node ./server.js",
     "production": "NODE_ENV=production & npm start",
     "test": "jest",
-    "lint": "./node_modules/.bin/eslint --ignore-pattern test.* ./src "
+    "lint": "./node_modules/.bin/eslint --ignore-pattern test.* ./src ",
+    "relay": "relay-compiler --src ./data --schema data/schema.js",
+    "update-schema": "babel-node ./data/updateSchema.js"
   },
   "author": "liminal18",
   "license": "ISC",
@@ -23,6 +25,7 @@
     "babel-cli": "^6.24.1",
     "babel-jest": "^20.0.1",
     "babel-loader": "^7.0.0",
+    "babel-plugin-relay": "^1.0.1",
     "babel-polyfill": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-es2016": "^6.24.1",
@@ -38,6 +41,7 @@
     "helmet": "^3.6.0",
     "jest": "^20.0.1",
     "react-test-renderer": "^15.5.4",
+    "relay-compiler": "^1.0.0",
     "require-clean": "^0.1.3",
     "webpack": "^2.5.1",
     "webpack-dev-server": "^2.4.5"

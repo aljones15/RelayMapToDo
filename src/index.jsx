@@ -1,7 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Map from './map/index.jsx';
-import Relay from 'react-relay';
+import Relay, {createFragmentContainer, graphql} from 'react-relay';
 import CityRoute from './routes/cities';
 
-ReactDOM.render(<Map />, document.getElementById('app'));
+var MapFrag = createFragmentContainer(
+  Map,
+  {
+    fragments: {
+      cities: () => Relay.QL`
+        fragment on City {
+          id,
+          lat,
+          lng
+        }
+      `,
+    }
+  }
+);
+
+
+ReactDOM.render(
+  <Relay.Renderer
+    environment={Relay.Store}
+    Container={MapFrag}
+    queryConfig={CityRoute}
+  />,
+  document.getElementById('app')
+);

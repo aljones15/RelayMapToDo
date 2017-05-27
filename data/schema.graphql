@@ -1,0 +1,31 @@
+schema {
+  query: RootQuery
+  mutation: ToDoMutations
+}
+
+# A city to be used on the map
+type City {
+  id: Int!
+  lat: Float
+  lng: Float
+  todo: [ToDo]
+}
+
+# An array of Cities
+type RootQuery {
+  cities: [City]
+  city(id: Int): City
+}
+
+# A To Do for a city
+type ToDo {
+  city_id: Int!
+  text: String
+  likes: Int
+  id: Int!
+}
+
+# Mutations for the To Do List
+type ToDoMutations {
+  createToDo(city_id: Int!, text: String!): ToDo
+}
