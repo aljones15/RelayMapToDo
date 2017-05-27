@@ -8,7 +8,7 @@
     "production": "NODE_ENV=production & npm start",
     "test": "jest",
     "lint": "./node_modules/.bin/eslint --ignore-pattern test.* ./src ",
-    "relay": "relay-compiler --src ./data --schema data/schema.js",
+    "relay": "relay-compiler --src ./src --schema data/schema.graphql",
     "update-schema": "babel-node ./data/updateSchema.js"
   },
   "author": "liminal18",
