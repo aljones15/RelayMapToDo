@@ -50,8 +50,8 @@ const {nodeInterface, nodeField} = nodeDefinitions(
   }
 );
 */
-const Root = new GraphQLObjectType({
-  name: 'RootQuery',
+const Query = new GraphQLObjectType({
+  name: 'Query',
   description: 'An array of Cities',
   fields: () => ({
     cities: { 
@@ -97,7 +97,7 @@ const ToDo = new GraphQLObjectType({
 });
 
 const Mutation = new GraphQLObjectType({
-  name: 'ToDoMutations',
+  name: 'Mutation',
   description: 'Mutations for the To Do List',
   fields: () => ({
     createToDo: {
@@ -114,7 +114,7 @@ const Mutation = new GraphQLObjectType({
 });
 
 export const Schema = new GraphQLSchema({
-  query: Root,
+  query: Query,
   mutation: Mutation
 });
 

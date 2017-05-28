@@ -2,16 +2,16 @@
   "data": {
     "__schema": {
       "queryType": {
-        "name": "RootQuery"
+        "name": "Query"
       },
       "mutationType": {
-        "name": "ToDoMutations"
+        "name": "Mutation"
       },
       "subscriptionType": null,
       "types": [
         {
           "kind": "OBJECT",
-          "name": "RootQuery",
+          "name": "Query",
           "description": "An array of Cities",
           "fields": [
             {
@@ -225,7 +225,7 @@
         },
         {
           "kind": "OBJECT",
-          "name": "ToDoMutations",
+          "name": "Mutation",
           "description": "Mutations for the To Do List",
           "fields": [
             {

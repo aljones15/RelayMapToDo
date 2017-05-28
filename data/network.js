@@ -18,7 +18,7 @@ function fetchQuery(
   }).then(response => {
     return response.json();
   })
-});
+}
 
 const network = Network.create(fetchQuery);
 

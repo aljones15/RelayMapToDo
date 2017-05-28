@@ -8,7 +8,7 @@
     "production": "NODE_ENV=production & npm start",
     "test": "jest",
     "lint": "./node_modules/.bin/eslint --ignore-pattern test.* ./src ",
-    "relay": "relay-compiler --src ./src --schema data/schema.graphql",
+    "relay": "relay-compiler --src ./src --schema ./data/schema.graphql --extensions=js,jsx",
     "update-schema": "babel-node ./data/updateSchema.js"
   },
   "author": "liminal18",
@@ -29,8 +29,8 @@
     "babel-polyfill": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-es2016": "^6.24.1",
+    "babel-preset-es2017": "^6.24.1",
     "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
     "compress": "^0.99.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
