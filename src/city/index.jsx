@@ -49,7 +49,7 @@ export class City extends React.Component{
    }
 }
 
-const cityFrag = createFragmentContainer(City, {
+const CityFrag = createFragmentContainer(City, {
   item: graphql`
     fragment city_item on City {
       _id
@@ -59,4 +59,4 @@ const cityFrag = createFragmentContainer(City, {
   `,
 });
 
-export default cityFrag;
+export default CityFrag;

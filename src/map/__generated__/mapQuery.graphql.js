@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule mapQuery.graphql
- * @generated SignedSource<<e7289aecc0a9a135727f865ec423b456>>
- * @relayHash 94a6180db9dae1c2be959e2838b506b1
+ * @generated SignedSource<<9d5298a3779c1c1c10d97ee582259a8c>>
+ * @relayHash 08055be235ecfcc31334e7235824101e
  * @flow
  * @nogrep
  */
@@ -22,14 +22,10 @@ import type {ConcreteBatch} from 'relay-runtime';
 /*
 query mapQuery {
   cities {
-    ...city_item
+    _id
+    lat
+    lng
   }
-}
-
-fragment city_item on City {
-  _id
-  lat
-  lng
 }
 */
 
@@ -49,9 +45,25 @@ const batch /*: ConcreteBatch*/ = {
         "plural": true,
         "selections": [
           {
-            "kind": "FragmentSpread",
-            "name": "city_item",
-            "args": null
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "_id",
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "lat",
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "lng",
+            "storageKey": null
           }
         ],
         "storageKey": null
@@ -78,38 +90,32 @@ const batch /*: ConcreteBatch*/ = {
         "plural": true,
         "selections": [
           {
-            "kind": "InlineFragment",
-            "type": "City",
-            "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "_id",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "lat",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "lng",
-                "storageKey": null
-              }
-            ]
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "_id",
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "lat",
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "lng",
+            "storageKey": null
           }
         ],
         "storageKey": null
       }
     ]
   },
-  "text": "query mapQuery {\n  cities {\n    ...city_item\n  }\n}\n\nfragment city_item on City {\n  _id\n  lat\n  lng\n}\n"
+  "text": "query mapQuery {\n  cities {\n    _id\n    lat\n    lng\n  }\n}\n"
 };
 
 module.exports = batch;
