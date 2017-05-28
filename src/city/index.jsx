@@ -1,6 +1,7 @@
 import React from 'react';
 import {IconStyle, ListStyle, ToDoStyle} from './style';
 import ToDoList from '../todoList/index.jsx';
+import { graphql, crateFragmentContainer } from 'react-relay';
 
 class City extends React.Component{
   constructor(props){
@@ -41,4 +42,14 @@ class City extends React.Component{
    }
 }
 
-export default City;
+const cityFrag = createFragmentContainer(City, {
+  item: graphql`
+    fragment Single_city on City {
+      id
+      lat
+      lng
+    }
+  `,
+});
+
+export default cityFrag;

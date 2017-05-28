@@ -117,5 +117,3 @@ export const Schema = new GraphQLSchema({
   query: Query,
   mutation: Mutation
 });
-
-export default Schema;
