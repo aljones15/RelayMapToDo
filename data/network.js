@@ -11,6 +11,7 @@ function fetchQuery(
   return fetch('/graphql', {
     method: 'POST',
     headers: {
+      'Accept': 'application/json',
       'content-type': 'application/json'
     },
     body: JSON.stringify({

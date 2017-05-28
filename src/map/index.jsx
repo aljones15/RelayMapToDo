@@ -3,7 +3,7 @@ import MapContainer from './style';
 import GoogleMapReact from 'google-map-react';
 import City from '../city/index.jsx';
 import Relay, {QueryRenderer, graphql} from 'react-relay';
-import environment from '../../Data/relayEnv';
+import environment from '../../data/relayEnv';
 
 class location {
   constructor(lat, lng) {
