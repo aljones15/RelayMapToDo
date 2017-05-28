@@ -72,7 +72,7 @@ const City = new GraphQLObjectType({
   name: 'City',
   description: 'A city to be used on the map',
   fields: () => ({
-    id: {type: new GraphQLNonNull(GraphQLInt)},
+    _id: {type: new GraphQLNonNull(GraphQLInt)},
     lat: {type: GraphQLFloat},
     lng: {type: GraphQLFloat},
     todo:{ 
@@ -92,7 +92,7 @@ const ToDo = new GraphQLObjectType({
       type: GraphQLInt,
       resolve: (todo) => todo.likes || 0
     },
-    id: {type: new GraphQLNonNull(GraphQLInt)}
+    _id: {type: new GraphQLNonNull(GraphQLInt)}
   })
 });
 

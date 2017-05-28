@@ -1,4 +1,6 @@
 const {Environment, Network} = require('relay-runtime');
+require('es6-promise').polyfill();
+require('isomorphic-fetch');
 
 function fetchQuery(
   operation,

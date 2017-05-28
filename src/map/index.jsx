@@ -1,7 +1,7 @@
 import React from 'react';
 import MapContainer from './style';
 import GoogleMapReact from 'google-map-react';
-import City from '../city/index.jsx';
+import city_item, {City} from '../city/index.jsx';
 import Relay, {QueryRenderer, graphql} from 'react-relay';
 import environment from '../../Data/relayEnv';
 
@@ -32,10 +32,9 @@ export class Map extends React.Component {
          <QueryRenderer
            environment={environment}
            query={graphql`
-             query GetAllCities {
+             query mapQuery {
                cities { 
-                 id
-                 lat
+                 ...city_item
                }
              }
           `}
@@ -45,7 +44,7 @@ export class Map extends React.Component {
                  return <div>{error.message}</div>;
                } else if (props) {
                  console.log(props);
-                 return <div>{props.data.id}</div>;
+                 return <div>Test City</div>;
                }
                  return <div>Loading</div>;
              }
@@ -61,10 +60,3 @@ Map.defaultProps = { center: {lat: 13.7563, lng: 100.5018}, zoom: 5 };
 
 
 export default Map;
-
-/*
- {bigCities.map((city, index) => { 
-           return(<City key={index + '_' + city.lat + '_' + city.lng} lat={city.lat} lng={city.lng} />);
-         })}
-
-*/

@@ -3,7 +3,7 @@
  */
 export class City {
   constructor(id, lat, lng, name){
-    this.id = id;
+    this._id = id;
     this.lat = lat;
     this.lng = lng;
     this.name = name;
@@ -18,7 +18,7 @@ export class ToDo {
     this.city_id = city;
     this.text = text;
     this.likes = 0;
-    this.id = id;
+    this._id = id;
   }
 }
 
@@ -55,7 +55,7 @@ export function AddToDo({city_id, text}){
  * @ param {Number} id
  */
 export function LikeToDo(id){
-  const td = ToDos.find((td) => td.id === id);
+  const td = ToDos.find((td) => td._id === id);
   if(!td){
     return false;
   }
@@ -68,7 +68,7 @@ export function LikeToDo(id){
  * @ param {Number} id
  */
 export function DislikeToDo(id){
-  const td = ToDos.find((td) => td.id === id);
+  const td = ToDos.find((td) => td._id === id);
   if(!td){
     return false;
   }
@@ -88,5 +88,5 @@ export function FetchCities(){
 * @ param {Number} id
 */
 export function FetchCity(id){
-  return Cities.find((c) => c.id === id);
+  return Cities.find((c) => c._id === id);
 }

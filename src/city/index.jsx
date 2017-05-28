@@ -1,10 +1,11 @@
 import React from 'react';
 import {IconStyle, ListStyle, ToDoStyle} from './style';
 import ToDoList from '../todoList/index.jsx';
-import { graphql, crateFragmentContainer } from 'react-relay';
+import { graphql, createFragmentContainer } from 'react-relay';
 
-class City extends React.Component{
+export class City extends React.Component{
   constructor(props){
+    console.log('city called');
     super(props);
     this.state = {open: false};
   }
@@ -23,12 +24,18 @@ class City extends React.Component{
     if(this.state.open){ 
       return(
 	<div className='ToDoList' style={ToDoStyle.container}>
-	  <div className='ToDoListClose' style={ToDoStyle.closeBar} onClick={this.fetchToDos.bind(this)}>Close</div>
+	  <div className='ToDoListClose' 
+            style={ToDoStyle.closeBar} 
+            onClick={this.fetchToDos.bind(this)}>Close</div>
           <ToDoList list={[1,2,3,4,5]} />
 	</div>
       );
     } else {
-      return(<img src='img/list/list-flat.svg' onError={() => this.src='img/list/32x32.png'} onClick={this.fetchToDos.bind(this)}/>);
+      return(
+        <img src='img/list/list-flat.svg' 
+          onError={() => this.src='img/list/32x32.png'} 
+          onClick={this.fetchToDos.bind(this)}/>
+      );
     }
   }
   render(){
@@ -44,8 +51,8 @@ class City extends React.Component{
 
 const cityFrag = createFragmentContainer(City, {
   item: graphql`
-    fragment Single_city on City {
-      id
+    fragment city_item on City {
+      _id
       lat
       lng
     }

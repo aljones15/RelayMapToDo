@@ -29,6 +29,11 @@
       "from": "encoding@>=0.1.11 <0.2.0",
       "resolved": "https://registry.npmjs.org/encoding/-/encoding-0.1.12.tgz"
     },
+    "es6-promise": {
+      "version": "4.1.0",
+      "from": "es6-promise@latest",
+      "resolved": "https://registry.npmjs.org/es6-promise/-/es6-promise-4.1.0.tgz"
+    },
     "eventemitter3": {
       "version": "1.2.0",
       "from": "eventemitter3@>=1.1.0 <2.0.0",
@@ -66,7 +71,7 @@
     },
     "isomorphic-fetch": {
       "version": "2.2.1",
-      "from": "isomorphic-fetch@>=2.1.1 <3.0.0",
+      "from": "https://registry.npmjs.org/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz",
       "resolved": "https://registry.npmjs.org/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz"
     },
     "iterall": {
@@ -85,9 +90,9 @@
       "resolved": "https://registry.npmjs.org/loose-envify/-/loose-envify-1.3.1.tgz"
     },
     "node-fetch": {
-      "version": "1.6.3",
+      "version": "1.7.0",
       "from": "node-fetch@>=1.0.1 <2.0.0",
-      "resolved": "https://registry.npmjs.org/node-fetch/-/node-fetch-1.6.3.tgz"
+      "resolved": "https://registry.npmjs.org/node-fetch/-/node-fetch-1.7.0.tgz"
     },
     "object-assign": {
       "version": "4.1.1",

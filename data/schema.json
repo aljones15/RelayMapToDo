@@ -65,7 +65,7 @@
           "description": "A city to be used on the map",
           "fields": [
             {
-              "name": "id",
+              "name": "_id",
               "description": null,
               "args": [],
               "type": {
@@ -192,7 +192,7 @@
               "deprecationReason": null
             },
             {
-              "name": "id",
+              "name": "_id",
               "description": null,
               "args": [],
               "type": {

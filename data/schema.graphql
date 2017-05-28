@@ -1,6 +1,6 @@
 # A city to be used on the map
 type City {
-  id: Int!
+  _id: Int!
   lat: Float
   lng: Float
   todo: [ToDo]
@@ -22,5 +22,5 @@ type ToDo {
   city_id: Int!
   text: String
   likes: Int
-  id: Int!
+  _id: Int!
 }
