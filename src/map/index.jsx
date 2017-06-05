@@ -1,7 +1,7 @@
 import React from 'react';
 import MapContainer from './style';
 import GoogleMapReact from 'google-map-react';
-import City from '../city/index.jsx';
+import {City} from '../city/index.jsx';
 import Relay, {QueryRenderer, graphql} from 'react-relay';
 import environment from '../../Data/relayEnv';
 
@@ -24,11 +24,6 @@ export class Map extends React.Component {
   render(){
     return(
      <div id='map'>
-       <GoogleMapReact
-       bootstrapURLKeys={{key: 'AIzaSyAeni6Tcs8a2dGVEHBBDXqZRZhb1GvfsmA'}}
-       defaultCenter={this.props.center} 
-       defaultZoom={this.props.zoom} 
-       >
          <QueryRenderer
            environment={environment}
            query={graphql`
@@ -46,22 +41,26 @@ export class Map extends React.Component {
                  return <div>{error.message}</div>;
                } else if (props) {
                  return(
-                   <div>
+                   <GoogleMapReact 
+                    bootstrapURLKeys={{key: 'AIzaSyAeni6Tcs8a2dGVEHBBDXqZRZhb1GvfsmA'}}
+       defaultCenter={this.props.center} 
+       defaultZoom={this.props.zoom} >
                    {
                    props.cities.map((item) =>
-                     <div 
+                     <City 
                        key={item.lat + item.lng} 
-                       lat={item.lat} lng={item.lng}>
-                       City</div>)
+                       lat={item.lat} lng={item.lng}
+                       city_id={item._id}
+                     >
+                     </City>)
                    }
-                   </div>
+                   </GoogleMapReact>
                  )
                }
                  return <div>Loading</div>;
              }
            }
          />
-       </GoogleMapReact>
      </div>
     )
   };
