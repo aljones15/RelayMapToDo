@@ -3,7 +3,7 @@ import MapContainer from './style';
 import GoogleMapReact from 'google-map-react';
 import {City} from '../city/index.jsx';
 import Relay, {QueryRenderer, graphql} from 'react-relay';
-import environment from '../../Data/relayEnv';
+import environment from '../../data/relayEnv';
 
 class location {
   constructor(lat, lng) {
@@ -11,11 +11,6 @@ class location {
     this.lng = lng;
   }
 };
-
-const changMai = new location(18.7061, 98.9817);
-const rangoon = new location(16.8661, 96.1951);
-const hanoi = new location(21.0278, 105.8342);
-const bigCities = [changMai, rangoon, hanoi];
 
 export class Map extends React.Component {
   constructor(props){
