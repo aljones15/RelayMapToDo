@@ -1,7 +1,7 @@
 import React from 'react';
 import ToDo from '../ToDo/index.jsx';
 import {ToDoStyle, ToDoAddStyle} from './style';
-import {commitMutation, QueryRenderer, graphql} from 'react-relay';
+import {QueryRenderer, graphql} from 'react-relay';
 import environment from '../../data/relayEnv';
 import AddToDo from './CreateToDoMutation.jsx';
 
@@ -12,7 +12,7 @@ const ToDoList = (props) => {
            environment={environment}
            query={graphql`
              query ToDoListQuery($cityID: Int!) {
-               city(id: $cityID) {
+               city(cityID: $cityID) {
                  todo{
                    ...ToDo
                  }

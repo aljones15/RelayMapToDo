@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule ToDoListQuery.graphql
- * @generated SignedSource<<fdfff2302ee9c6f59153b62abaad7877>>
- * @relayHash a33001a0c41e73148fa49bde109eff59
+ * @generated SignedSource<<68f64476f55e419313abf1a49a8cfc9f>>
+ * @relayHash d543fb4a233ffbcc79c0545c57c5a2d8
  * @flow
  * @nogrep
  */
@@ -23,7 +23,7 @@ import type {ConcreteBatch} from 'relay-runtime';
 query ToDoListQuery(
   $cityID: Int!
 ) {
-  city(id: $cityID) {
+  city(cityID: $cityID) {
     todo {
       ...ToDo
     }
@@ -57,9 +57,9 @@ const batch /*: ConcreteBatch*/ = {
         "args": [
           {
             "kind": "Variable",
-            "name": "id",
+            "name": "cityID",
             "variableName": "cityID",
-            "type": "Int"
+            "type": "Int!"
           }
         ],
         "concreteType": "City",
@@ -111,9 +111,9 @@ const batch /*: ConcreteBatch*/ = {
         "args": [
           {
             "kind": "Variable",
-            "name": "id",
+            "name": "cityID",
             "variableName": "cityID",
-            "type": "Int"
+            "type": "Int!"
           }
         ],
         "concreteType": "City",
@@ -163,7 +163,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query ToDoListQuery(\n  $cityID: Int!\n) {\n  city(id: $cityID) {\n    todo {\n      ...ToDo\n    }\n  }\n}\n\nfragment ToDo on ToDo {\n  text\n  likes\n  _id\n}\n"
+  "text": "query ToDoListQuery(\n  $cityID: Int!\n) {\n  city(cityID: $cityID) {\n    todo {\n      ...ToDo\n    }\n  }\n}\n\nfragment ToDo on ToDo {\n  text\n  likes\n  _id\n}\n"
 };
 
 module.exports = batch;

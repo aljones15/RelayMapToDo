@@ -14,7 +14,7 @@ type Mutation {
 # An array of Cities
 type Query {
   cities: [City]
-  city(id: Int): City
+  city(cityID: Int!): City
 }
 
 # A To Do for a city

@@ -63,9 +63,9 @@ const Query = new GraphQLObjectType({
     city: {
       type: City,
       args: {
-        id: {type: GraphQLInt}
+        cityID: {type: new GraphQLNonNull(GraphQLInt)}
       },
-      resolve: (source, {id}) => FetchCity(id)
+      resolve: (source, {cityID}) => FetchCity(cityID)
     }
   })
 });
@@ -79,7 +79,7 @@ const City = new GraphQLObjectType({
     lng: {type: GraphQLFloat},
     todo:{ 
       type: new GraphQLList(ToDo),
-      resolve: (city) => FetchToDos(city.id)
+      resolve: ({_id}) => FetchToDos(_id)
     }
   })
 });
