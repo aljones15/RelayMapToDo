@@ -3,6 +3,7 @@ import ToDo from '../ToDo/index.jsx';
 import {ToDoStyle, ToDoAddStyle} from './style';
 import {commitMutation, QueryRenderer, graphql} from 'react-relay';
 import environment from '../../data/relayEnv';
+import AddToDo from './CreateToDoMutation.jsx';
 
 const ToDoList = (props) => {
   const city_id = props.city_id;
@@ -27,7 +28,11 @@ const ToDoList = (props) => {
              } else if (props) {
                return(
                  <ul className='ToDoUl' style={ToDoStyle}>
-                   <li style={ToDoAddStyle} >Know Something to do here?</li>
+                   <li 
+                     style={ToDoAddStyle} 
+                     onClick={() => AddToDo(city_id, "test")}>
+                     Know Something to do here?
+                   </li>
                    {	  
                      props.city.todo.map((todo, index) => {
                      return(<ToDo data={todo} key={index + '_todo'}  />); })

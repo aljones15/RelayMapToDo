@@ -8,7 +8,7 @@ type City {
 
 # Mutations for the To Do List
 type Mutation {
-  createToDo(city_id: Int!, text: String!): ToDo
+  createToDo(input: ToDoInput): ToDo
 }
 
 # An array of Cities
@@ -23,4 +23,9 @@ type ToDo {
   text: String
   likes: Int
   _id: Int!
+}
+
+input ToDoInput {
+  city_id: Int!
+  text: String
 }

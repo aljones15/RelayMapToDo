@@ -1,6 +1,6 @@
 # A city to be used on the map
 type City {
-  id: Int!
+  _id: Int!
   lat: Float
   lng: Float
   todo: [ToDo]
@@ -8,7 +8,7 @@ type City {
 
 # Mutations for the To Do List
 type Mutation {
-  createToDo(city_id: Int!, text: String!): ToDo
+  createToDo(input: ToDoInput): ToDo
 }
 
 # An array of Cities
@@ -22,5 +22,10 @@ type ToDo {
   city_id: Int!
   text: String
   likes: Int
-  id: Int!
+  _id: Int!
+}
+
+input ToDoInput {
+  city_id: Int!
+  text: String
 }

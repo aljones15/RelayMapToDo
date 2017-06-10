@@ -15,7 +15,8 @@ import {
   GraphQLObjectType,
   GraphQLEnumType,
   GraphQLNonNull,
-  GraphQLSchema
+  GraphQLSchema,
+  GraphQLInputObjectType
 } from 'graphql';
 
 /***
@@ -50,6 +51,7 @@ const {nodeInterface, nodeField} = nodeDefinitions(
   }
 );
 */
+
 const Query = new GraphQLObjectType({
   name: 'Query',
   description: 'An array of Cities',
@@ -96,6 +98,14 @@ const ToDo = new GraphQLObjectType({
   })
 });
 
+const ToDoInput = new GraphQLInputObjectType({
+  name: 'ToDoInput',
+  fields: {
+    city_id: {type: new GraphQLNonNull(GraphQLInt)},
+    text: {type: GraphQLString},
+  }
+});
+
 const Mutation = new GraphQLObjectType({
   name: 'Mutation',
   description: 'Mutations for the To Do List',
@@ -103,8 +113,7 @@ const Mutation = new GraphQLObjectType({
     createToDo: {
       type: ToDo,
       args: {
-        city_id: {type: new GraphQLNonNull(GraphQLInt)},
-        text: {type: new GraphQLNonNull(GraphQLString)}
+        input: {type: ToDoInput}
       },
       resolve: (source, args) => {
         return AddToDo(args);
