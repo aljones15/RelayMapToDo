@@ -1,15 +1,14 @@
 import React from 'react';
 import {IconStyle, ListStyle, ToDoStyle} from './style';
-import ToDoList from '../todoList/index.jsx';
-import { graphql, createFragmentContainer } from 'react-relay';
+import ToDoList from '../ToDoList/index.jsx';
+import {graphql, createFragmentContainer } from 'react-relay';
 
 class CityView extends React.Component{
   constructor(props){
     super(props);
-    console.log(props);
     this.state = {open: false};
   }
-  fetchToDos(_){
+  toggleToDoList(_){
     console.log('fetch to dos called');
     this.setState((pstate, props) => { return {open: !pstate.open} });
   }
@@ -26,15 +25,15 @@ class CityView extends React.Component{
 	<div className='ToDoList' style={ToDoStyle.container}>
 	  <div className='ToDoListClose' 
             style={ToDoStyle.closeBar} 
-            onClick={this.fetchToDos.bind(this)}>Close</div>
-          <ToDoList list={[1,2,3,4,5]} />
+            onClick={this.toggleToDoList.bind(this)}>Close</div>
+          <ToDoList city_id={this.props.item._id} list={[1,2,3,4,5]} />
 	</div>
       );
     } else {
       return(
         <img src='img/list/list-flat.svg' 
           onError={() => this.src='img/list/32x32.png'} 
-          onClick={this.fetchToDos.bind(this)}/>
+          onClick={this.toggleToDoList.bind(this)}/>
       );
     }
   }

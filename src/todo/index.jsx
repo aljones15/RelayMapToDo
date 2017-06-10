@@ -1,12 +1,22 @@
 import React from 'react';
 import ToDoStyle from './style';
+import {graphql, createFragmentContainer } from 'react-relay';
 
-const ToDo = (props) => {
+
+const ToDo = createFragmentContainer(
+({data}) => {
   return(
     <li style={ToDoStyle}>
-      To Do!
+      {data._id} | {data.text} | {data.likes}
     </li>		  
   )
-}
+},
+graphql`
+  fragment ToDo on ToDo{
+    text
+    likes
+    _id
+  }
+`)
 
 export default ToDo
