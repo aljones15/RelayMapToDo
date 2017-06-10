@@ -3,10 +3,10 @@ import {IconStyle, ListStyle, ToDoStyle} from './style';
 import ToDoList from '../todoList/index.jsx';
 import { graphql, createFragmentContainer } from 'react-relay';
 
-export class City extends React.Component{
+class CityView extends React.Component{
   constructor(props){
-    console.log('city called');
     super(props);
+    console.log(props);
     this.state = {open: false};
   }
   fetchToDos(_){
@@ -40,7 +40,10 @@ export class City extends React.Component{
   }
   render(){
     return(
-      <div className='City' style={this.toggleStyle()} >
+      <div 
+        className='City' 
+        style={this.toggleStyle()} 
+      >
       {
         this.toggle()
       }  
@@ -49,14 +52,13 @@ export class City extends React.Component{
    }
 }
 
-const CityFrag = createFragmentContainer(City, {
-  item: graphql`
-    fragment city_item on City {
-      _id
-      lat
-      lng
+const City = createFragmentContainer(
+  CityView,
+  graphql`
+    fragment City_item on City {
+      _id 
     }
   `,
-});
+);
 
-export default CityFrag;
+export default City;

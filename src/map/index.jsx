@@ -1,7 +1,7 @@
 import React from 'react';
 import MapContainer from './style';
 import GoogleMapReact from 'google-map-react';
-import {City} from '../city/index.jsx';
+import City from '../City/index.jsx';
 import Relay, {QueryRenderer, graphql} from 'react-relay';
 import environment from '../../data/relayEnv';
 
@@ -23,10 +23,10 @@ export class Map extends React.Component {
            environment={environment}
            query={graphql`
              query mapQuery {
-               cities { 
-                 _id
+               cities {
                  lat
                  lng
+                 ...City_item
                }
              }
           `}
@@ -41,13 +41,15 @@ export class Map extends React.Component {
        defaultCenter={this.props.center} 
        defaultZoom={this.props.zoom} >
                    {
-                   props.cities.map((item) =>
-                     <City 
-                       key={item.lat + item.lng} 
-                       lat={item.lat} lng={item.lng}
-                       city_id={item._id}
-                     >
-                     </City>)
+                   props.cities.map((item) => {
+                     return(
+                     <City
+                       item={item} 
+                       lat={item.lat} 
+                       lng={item.lng} 
+                       key={item.lat + "_" + item.lng} 
+                     />);
+                   })
                    }
                    </GoogleMapReact>
                  )
