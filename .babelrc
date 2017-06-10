@@ -1,1 +1,4 @@
-{ "presets": ["react", "es2016", "es2015", "stage-0"] }
+{
+"plugins": ["relay"], 
+"presets": ["react", "es2016", "es2015"] 
+}
