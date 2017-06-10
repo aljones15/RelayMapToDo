@@ -26,13 +26,13 @@ const ToDoList = (props) => {
                return <div>{error.message}</div>
              } else if (props) {
                return(
-               <ul className='ToDoUl' style={ToDoStyle}>
-                 <li style={ToDoAddStyle} >Know Something to do here?</li>
-                 {	  
-                   props.city.todo.map((todo, index) => {
+                 <ul className='ToDoUl' style={ToDoStyle}>
+                   <li style={ToDoAddStyle} >Know Something to do here?</li>
+                   {	  
+                     props.city.todo.map((todo, index) => {
                      return(<ToDo data={todo} key={index + '_todo'}  />); })
-                 }
-               </ul>);
+                   }
+                 </ul>);
              }
              return <div>Loading</div>
            }
