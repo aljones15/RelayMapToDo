@@ -12,7 +12,7 @@ const ToDo = createFragmentContainer(
   )
 },
 graphql`
-  fragment ToDo on ToDo{
+  fragment ToDo on ToDo {
     text
     likes
     _id
