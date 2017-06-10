@@ -1,7 +1,7 @@
 import React from 'react';
-import ToDo from '../todo/index.jsx';
+import ToDo from '../ToDo/index.jsx';
 import {ToDoStyle, ToDoAddStyle} from './style';
-import Relay, {QueryRenderer, graphql, createFragmentContainer } from 'react-relay';
+import {QueryRenderer, graphql} from 'react-relay';
 import environment from '../../data/relayEnv';
 
 const ToDoList = (props) => {

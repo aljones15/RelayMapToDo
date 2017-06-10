@@ -2,7 +2,7 @@ import React from 'react';
 import MapContainer from './style';
 import GoogleMapReact from 'google-map-react';
 import City from '../City/index.jsx';
-import Relay, {QueryRenderer, graphql} from 'react-relay';
+import {QueryRenderer, graphql} from 'react-relay';
 import environment from '../../data/relayEnv';
 
 class location {
@@ -22,7 +22,7 @@ export class Map extends React.Component {
          <QueryRenderer
            environment={environment}
            query={graphql`
-             query mapQuery {
+             query MapQuery {
                cities {
                  lat
                  lng
