@@ -1,5 +1,5 @@
-import relayTestingUtils from 'relay-testing-utils';
-import { mount } from 'enzyme';
+import React from 'react';
+import ReactTestRenderer from 'react-test-renderer';
 import City from './index';
 
 const City_item = {
@@ -7,10 +7,10 @@ const City_item = {
 }
 
 describe('map should', () => {
-  const elJson = mount(
-    relayTestingUtils.wrapRelay(<City {...City_item} />)
-   );
+  const elJson = ReactTestRenderer.create(
+    <City item={City_item} />
+   ).toJSON();
   it('match a snapshot', () => {
-    //expect(elJson).toMatchSnapshot();
+    expect(elJson).toMatchSnapshot();
   });
 });

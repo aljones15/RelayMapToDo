@@ -1,5 +1,5 @@
-import relayTestingUtils from 'relay-testing-utils';
-import { mount } from 'enzyme';
+import React from 'react';
+import ReactTestRenderer from 'react-test-renderer';
 import ToDo from './index';
 
 const todo = {
@@ -9,10 +9,10 @@ const todo = {
 };
 
 describe('ToDo Should', () => {
-  const elJson = mount(
-    relayTestingUtils.wrapRelay(<ToDo {...todo} />)
-  );
+  const elJson = ReactTestRenderer.create(
+    <ToDo data={todo} />
+  ).toJSON();
   it('match a snapshot', () => {
-    //expect(elJson).toMatchSnapshot();
+    expect(elJson).toMatchSnapshot();
   });
 });

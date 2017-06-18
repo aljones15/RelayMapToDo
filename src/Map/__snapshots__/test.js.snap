@@ -3,9 +3,5 @@
 exports[`map should match a snapshot 1`] = `
 <div
   id="map"
->
-  <div>
-    Loading
-  </div>
-</div>
+/>
 `;
