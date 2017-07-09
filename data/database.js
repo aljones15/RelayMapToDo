@@ -57,7 +57,7 @@ export function FindToDo(id){
 }
 
 /***
-* paginates a todo
+* paginates a todo forward method for pagination
 * @ param {number} the to do we want to find after
 * @ param {number} first the number of items to find
 * @ param {number} city_id

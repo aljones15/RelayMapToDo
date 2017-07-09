@@ -12,9 +12,14 @@ Using React, Relay, Graph QL, and Express construct a simple google map apps tha
 - Selenuim
 - Cucumber
 
+## ToDo
+- [] Finish Implementing PaginationContainer
+- [] https://facebook.github.io/relay/docs/pagination-container.html
+
 ### Install
 ```
 npm install
 npm test
 npm start
+
 ```
