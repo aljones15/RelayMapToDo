@@ -3,7 +3,7 @@ type City {
   _id: Int!
   lat: Float
   lng: Float
-  todo: [ToDo]
+  todo(first: Int, after: String, last: Int, before: String): ToDoConnection
 }
 
 # Mutations for the To Do List
@@ -25,7 +25,25 @@ type ToDo {
   _id: Int!
 }
 
+# To Do Connection
+type ToDoConnection {
+  edges: [ToDoEgde]
+  pageInfo: ToDoPageInfo
+}
+
+# To Do Edge
+type ToDoEgde {
+  node: ToDo
+  cursor: String!
+}
+
 input ToDoInput {
   city_id: Int!
   text: String
+}
+
+# ToDo Page Info
+type ToDoPageInfo {
+  hasPreviousPage: Boolean!
+  hasNextPage: Boolean!
 }

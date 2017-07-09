@@ -10,6 +10,13 @@ export class City {
   }
 }
 
+
+export class QlNode {
+  constructor(cursor, item){
+    this.cursor = String(cursor);
+    this.node = item;
+  }
+}
 /***
  *  basic class for To Do
  */
@@ -36,7 +43,31 @@ const ToDos = [];
  * @ param {Number} city
  */
 export function FetchToDos(city_id){
-  return ToDos.filter((td) => td.city_id === city_id);
+  return ToDos.
+           filter((td) => td.city_id === city_id).
+             sort((first, second) => first._id - second._id)
+}
+
+/***
+* finds a todo
+* @ param {number} id for a to do
+*/
+export function FindToDo(id){
+  return ToDos.find((td) => td._id === id);
+}
+
+/***
+* paginates a todo
+* @ param {number} the to do we want to find after
+* @ param {number} first the number of items to find
+* @ param {number} city_id
+*/
+
+export function PaginateToDo(todo_id, first, city_id){
+  const todos = FetchToDos(city_id);
+  const after = todos.find((td) => td._id === todo_id);
+  const index = todos.indexOf(after);
+  return todos.slice(index, first).map((item, index) => new QlNode(index, item));
 }
 
 /***

@@ -4,13 +4,15 @@ import {
   LikeToDo,
   DislikeToDo,
   FetchCities,
-  FetchCity
+  FetchCity,
+  PaginateToDo
 } from './database';
 
 import {
   GraphQLInt,
   GraphQLFloat,
   GraphQLString,
+  GraphQLBoolean,
   GraphQLList,
   GraphQLObjectType,
   GraphQLEnumType,
@@ -78,8 +80,14 @@ const City = new GraphQLObjectType({
     lat: {type: GraphQLFloat},
     lng: {type: GraphQLFloat},
     todo:{ 
-      type: new GraphQLList(ToDo),
-      resolve: ({_id}) => FetchToDos(_id)
+      type: ToDoConnection,
+      args: {
+        first: {type: GraphQLInt}, 
+        after: {type: GraphQLString},
+        last: {type: GraphQLInt}, 
+        before: {type: GraphQLString} 
+      },
+      resolve:  ({_id}) => PaginateToDo(0, 5, _id) 
     }
   })
 });
@@ -95,6 +103,38 @@ const ToDo = new GraphQLObjectType({
       resolve: (todo) => todo.likes || 0
     },
     _id: {type: new GraphQLNonNull(GraphQLInt)}
+  })
+});
+
+const ToDoEdge = new GraphQLObjectType({
+  name: 'ToDoEgde',
+  description: 'To Do Edge',
+  fields: () => ({
+    node: {type: ToDo},
+    cursor: {type: new GraphQLNonNull(GraphQLString)}
+  })
+});
+
+const ToDoPageInfo = new GraphQLObjectType({
+  name: 'ToDoPageInfo',
+  description: 'ToDo Page Info',
+  fields: () => ({
+    hasPreviousPage: {type: new GraphQLNonNull(GraphQLBoolean)},
+    hasNextPage: {type: new GraphQLNonNull(GraphQLBoolean)}
+  }) 
+});
+
+const ToDoConnection = new GraphQLObjectType({
+  name: 'ToDoConnection',
+  description: 'To Do Connection',
+  fields: () => ({
+    edges: {
+      type: new GraphQLList(ToDoEdge),
+      resolve: (args) => { console.log('ToDoConnection Args'); 
+                           console.log(args); 
+                           return args; }
+    },
+    pageInfo: {type: ToDoPageInfo}
   })
 });
 

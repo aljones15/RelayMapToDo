@@ -9,6 +9,7 @@ exports[`ToDo Should match a snapshot 1`] = `
       "display": "flex",
       "flexGrow": 1,
       "flexShrink": 1,
+      "height": "25px",
       "maxWidth": "100%",
       "padding": "5px",
     }
