@@ -6,6 +6,7 @@ const ToDoStyle = {
   backgroundColor: 'rgba(50,50,50,0.5)',
   color: '#FFFFFF',
   padding: '5px',
+  height: '25px'
 };
 
 export default ToDoStyle;

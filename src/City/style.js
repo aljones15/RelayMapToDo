@@ -28,6 +28,7 @@ export const ListStyle = {
   left: (-K_WIDTH * 10) / 2,
   top: (-K_HEIGHT * 10) / 2,
   backgroundColor: 'rgba(0,0,0,0.2)',
+  overflow: 'auto'
 };
 
 export const ToDoStyle = {
@@ -39,12 +40,13 @@ export const ToDoStyle = {
     height: '100%',
     width: '100%',
     backgroundColor: 'rgba(0,0,0,0.5)',
+    overflow: 'auto'
   },
   closeBar: {
     display: 'flex',
     flexGrow: 1,
     flexShrink: 1,
-    height: '1rem',
+    height: '2rem',
     maxHeight: '2rem',
     width: K_WIDTH * 10,
     maxWidth: '100%',

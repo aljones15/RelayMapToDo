@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule ToDoListQuery.graphql
- * @generated SignedSource<<68f64476f55e419313abf1a49a8cfc9f>>
- * @relayHash d543fb4a233ffbcc79c0545c57c5a2d8
+ * @generated SignedSource<<9d6e304028651aa211b4a798e917c7b6>>
+ * @relayHash 6ce1afbeecb6701f5bcb659ec8271acd
  * @flow
  * @nogrep
  */
@@ -25,7 +25,12 @@ query ToDoListQuery(
 ) {
   city(cityID: $cityID) {
     todo {
-      ...ToDo
+      edges {
+        cursor
+        node {
+          ...ToDo
+        }
+      }
     }
   }
 }
@@ -70,14 +75,43 @@ const batch /*: ConcreteBatch*/ = {
             "kind": "LinkedField",
             "alias": null,
             "args": null,
-            "concreteType": "ToDo",
+            "concreteType": "ToDoConnection",
             "name": "todo",
-            "plural": true,
+            "plural": false,
             "selections": [
               {
-                "kind": "FragmentSpread",
-                "name": "ToDo",
-                "args": null
+                "kind": "LinkedField",
+                "alias": null,
+                "args": null,
+                "concreteType": "ToDoEgde",
+                "name": "edges",
+                "plural": true,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "cursor",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "args": null,
+                    "concreteType": "ToDo",
+                    "name": "node",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "kind": "FragmentSpread",
+                        "name": "ToDo",
+                        "args": null
+                      }
+                    ],
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
               }
             ],
             "storageKey": null
@@ -124,36 +158,59 @@ const batch /*: ConcreteBatch*/ = {
             "kind": "LinkedField",
             "alias": null,
             "args": null,
-            "concreteType": "ToDo",
+            "concreteType": "ToDoConnection",
             "name": "todo",
-            "plural": true,
+            "plural": false,
             "selections": [
               {
-                "kind": "InlineFragment",
-                "type": "ToDo",
+                "kind": "LinkedField",
+                "alias": null,
+                "args": null,
+                "concreteType": "ToDoEgde",
+                "name": "edges",
+                "plural": true,
                 "selections": [
                   {
                     "kind": "ScalarField",
                     "alias": null,
                     "args": null,
-                    "name": "text",
+                    "name": "cursor",
                     "storageKey": null
                   },
                   {
-                    "kind": "ScalarField",
+                    "kind": "LinkedField",
                     "alias": null,
                     "args": null,
-                    "name": "likes",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "_id",
+                    "concreteType": "ToDo",
+                    "name": "node",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
+                        "name": "text",
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
+                        "name": "likes",
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
+                        "name": "_id",
+                        "storageKey": null
+                      }
+                    ],
                     "storageKey": null
                   }
-                ]
+                ],
+                "storageKey": null
               }
             ],
             "storageKey": null
@@ -163,7 +220,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query ToDoListQuery(\n  $cityID: Int!\n) {\n  city(cityID: $cityID) {\n    todo {\n      ...ToDo\n    }\n  }\n}\n\nfragment ToDo on ToDo {\n  text\n  likes\n  _id\n}\n"
+  "text": "query ToDoListQuery(\n  $cityID: Int!\n) {\n  city(cityID: $cityID) {\n    todo {\n      edges {\n        cursor\n        node {\n          ...ToDo\n        }\n      }\n    }\n  }\n}\n\nfragment ToDo on ToDo {\n  text\n  likes\n  _id\n}\n"
 };
 
 module.exports = batch;
