@@ -12,8 +12,8 @@ export class City {
 
 
 export class QlNode {
-  constructor(cursor, item){
-    this.cursor = String(cursor);
+  constructor(item){
+    this.cursor = String(item._id);
     this.node = item;
   }
 }
@@ -65,9 +65,14 @@ export function FindToDo(id){
 
 export function PaginateToDo(todo_id, first, city_id){
   const todos = FetchToDos(city_id);
+  console.log('PaginateToDos -> List');
+  console.log(todos);
   const after = todos.find((td) => td._id === todo_id);
-  const index = todos.indexOf(after);
-  return todos.slice(index, first).map((item, index) => new QlNode(index, item));
+  let index = todos.indexOf(after);
+  index = index < 0 ? 0 : index;
+  console.log('PaginateToDos -> index ' + index);
+  console.log('PaginateToDos -> first ' + first);
+  return todos.slice(index, first).map((item) => new QlNode(item));
 }
 
 /***

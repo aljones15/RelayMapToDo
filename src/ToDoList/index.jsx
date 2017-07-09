@@ -41,9 +41,7 @@ const ToDoList = (props) => {
              if(error){
                return <div>{error.message}</div>
              } else if (props) {
-               console.log('ToDoList Query Props');
-               console.log(props);
-               return(
+              return(
                  <ul className='ToDoUl' style={ToDoStyle}>
                    <li 
                      style={ToDoAddStyle} 
