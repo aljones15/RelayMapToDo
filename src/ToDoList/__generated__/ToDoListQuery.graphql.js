@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule ToDoListQuery.graphql
- * @generated SignedSource<<9d6e304028651aa211b4a798e917c7b6>>
- * @relayHash 6ce1afbeecb6701f5bcb659ec8271acd
+ * @generated SignedSource<<966986115e82a25e216049ed6b72c57c>>
+ * @relayHash 71efa369c4bbc909295d9945a1b2d36e
  * @flow
  * @nogrep
  */
@@ -24,7 +24,7 @@ query ToDoListQuery(
   $cityID: Int!
 ) {
   city(cityID: $cityID) {
-    todo {
+    todo(first: 5, after: "0") {
       edges {
         cursor
         node {
@@ -74,7 +74,20 @@ const batch /*: ConcreteBatch*/ = {
           {
             "kind": "LinkedField",
             "alias": null,
-            "args": null,
+            "args": [
+              {
+                "kind": "Literal",
+                "name": "after",
+                "value": "0",
+                "type": "String"
+              },
+              {
+                "kind": "Literal",
+                "name": "first",
+                "value": 5,
+                "type": "Int"
+              }
+            ],
             "concreteType": "ToDoConnection",
             "name": "todo",
             "plural": false,
@@ -114,7 +127,7 @@ const batch /*: ConcreteBatch*/ = {
                 "storageKey": null
               }
             ],
-            "storageKey": null
+            "storageKey": "todo{\"after\":\"0\",\"first\":5}"
           }
         ],
         "storageKey": null
@@ -157,7 +170,20 @@ const batch /*: ConcreteBatch*/ = {
           {
             "kind": "LinkedField",
             "alias": null,
-            "args": null,
+            "args": [
+              {
+                "kind": "Literal",
+                "name": "after",
+                "value": "0",
+                "type": "String"
+              },
+              {
+                "kind": "Literal",
+                "name": "first",
+                "value": 5,
+                "type": "Int"
+              }
+            ],
             "concreteType": "ToDoConnection",
             "name": "todo",
             "plural": false,
@@ -213,14 +239,14 @@ const batch /*: ConcreteBatch*/ = {
                 "storageKey": null
               }
             ],
-            "storageKey": null
+            "storageKey": "todo{\"after\":\"0\",\"first\":5}"
           }
         ],
         "storageKey": null
       }
     ]
   },
-  "text": "query ToDoListQuery(\n  $cityID: Int!\n) {\n  city(cityID: $cityID) {\n    todo {\n      edges {\n        cursor\n        node {\n          ...ToDo\n        }\n      }\n    }\n  }\n}\n\nfragment ToDo on ToDo {\n  text\n  likes\n  _id\n}\n"
+  "text": "query ToDoListQuery(\n  $cityID: Int!\n) {\n  city(cityID: $cityID) {\n    todo(first: 5, after: \"0\") {\n      edges {\n        cursor\n        node {\n          ...ToDo\n        }\n      }\n    }\n  }\n}\n\nfragment ToDo on ToDo {\n  text\n  likes\n  _id\n}\n"
 };
 
 module.exports = batch;

@@ -64,15 +64,12 @@ export function FindToDo(id){
 */
 
 export function PaginateToDo(todo_id, first, city_id){
-  const todos = FetchToDos(city_id);
-  console.log('PaginateToDos -> List');
-  console.log(todos);
+  let todos = FetchToDos(city_id);
   const after = todos.find((td) => td._id === todo_id);
   let index = todos.indexOf(after);
   index = index < 0 ? 0 : index;
-  console.log('PaginateToDos -> index ' + index);
-  console.log('PaginateToDos -> first ' + first);
-  return todos.slice(index, first).map((item) => new QlNode(item));
+  todos = todos.slice(index, first).map((item) => new QlNode(item));
+  return todos;
 }
 
 /***

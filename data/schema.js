@@ -87,7 +87,9 @@ const City = new GraphQLObjectType({
         last: {type: GraphQLInt}, 
         before: {type: GraphQLString} 
       },
-      resolve:  ({_id}) => PaginateToDo(0, 5, _id) 
+      resolve: ({_id}, {first, after}) => {
+        return PaginateToDo(after, first, _id);
+      } 
     }
   })
 });
@@ -130,10 +132,8 @@ const ToDoConnection = new GraphQLObjectType({
   fields: () => ({
     edges: {
       type: new GraphQLList(ToDoEdge),
-      resolve: (args) => { console.log('ToDoConnection Args'); 
-                           console.log(args); 
-                           return args; }
-    },
+      resolve: (edges) => edges
+   },
     pageInfo: {type: ToDoPageInfo}
   })
 });
