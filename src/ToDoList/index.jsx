@@ -8,7 +8,7 @@ import {
   AddToDoInput,
   AddToDoSubmit
 } from './style';
-import {QueryRenderer, graphql} from 'react-relay';
+import {QueryRenderer, graphql, createPaginationContainer} from 'react-relay';
 import environment from '../../data/relayEnv';
 import AddToDo from './CreateToDoMutation.jsx';
 
@@ -64,4 +64,56 @@ const ToDoList = (props) => {
   )
 }
 
+const ToDoPage = (props) => {
+  return(
+  <ul className='ToDoUl' style={ToDoStyle}>
+    <li 
+      style={ToDoAddStyle} 
+      onClick={() => AddToDo(city_id, "test")}>
+     <h3 style={AddToTitle}>Know Something to do here?</h3>
+     <label htmlFor='addtodo' > To Do:</label>
+     <textarea id='addtodo' type='text' style={ToDoRowStyle}/>
+     <button style={ToDoRowStyle}>Submit</button>
+   </li>
+ </ul>
+  
+  )
+
+}
+/*
+const ToDoPagination = createPaginationContainer(
+  ToDoPage,
+  {
+    direction: 'forward',
+    getConnectionFromProps: (props) => {
+      console.log('getConnectionFromProps');
+      console.log(props);
+
+    },
+    getVariables: (one, two, three) => {
+      console.log('getVariables');
+      console.log(one);
+      console.log(two);
+      console.log(three);
+    },
+    query: graphql`
+             query ToDoListQuery($cityID: Int! $first: Int! $after: String!) {
+               city(cityID: $cityID) {
+                 todo(first: $first after: $after){
+                   edges {
+                     cursor
+                     node {
+                       ...ToDo
+
+                     }
+                   }
+                 }
+               }
+             }
+          `
+  }
+);
+*/
+
 export default ToDoList
+//export default ToDoPagination
