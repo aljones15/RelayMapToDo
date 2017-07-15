@@ -69,11 +69,20 @@ class ToDoPage extends React.Component {
     super(props);
   }
   componentDidMount(){
+    /*
     console.log('ToDoPage -> props');
     console.log(this.props);
-    this.props.relay.loadMore(5, e =>{ console.log(e)});
+    this.props.relay.loadMore(5, e =>{ 
+      console.log('loadMore ->');
+      console.log(e)});
+    console.log('isLoading -> ' + this.props.relay.isLoading());
+    console.log('hasMore -> ' + this.props.relay.hasMore());
+    */
+    console.log(this.props.relay.refetchConnection());
   }
-  render(){  
+  render(){
+    console.log('render ->');
+    console.log(this.props); 
     return(
       <ul className='ToDoUl' style={ToDoStyle}>
         <li 
@@ -95,8 +104,8 @@ const ToDoPagination = createPaginationContainer(
     todo: graphql`
       fragment ToDoList_todo on City {
         todo(
-          first: 5
-          after: "1"
+          first: $first
+          after: $last
         ) @connection(key: "ToDoConnection_todo"){
           edges {
             node {
@@ -114,30 +123,35 @@ const ToDoPagination = createPaginationContainer(
       console.log(props);
       return props.todo;
     },
-    getFragmentVariables(prevVars, totalCount) {
+    getFragmentVariables(preVars, totalCount) {
       console.log('Get Fragment Variable');
+      console.log(preVars);
+      console.log(totalCount);
       return {
-        first: prevVars.first,
+        first: preVars.first || 1,
         last: preVars.last,
-        count: totalCount,
-        city_id: this.props.city_id
+        after: preVars.after || 5,
+        count: totalCount || 0
       };
     },
-    getVariables(one, two, three) {
+    getVariables(one, two) {
       console.log('getVariables');
       console.log(one);
       console.log(two);
-      console.log(three);
+      return {
+        count: two.count, 
+        cursor: two.cursor,
+        cityID: one.city_id
+      };
     },
     query: graphql`
-             query ToDoListQuery($cityID: Int! $first: Int! $after: String!) {
+             query ToDoListQuery($cityID: Int!) {
                city(cityID: $cityID) {
                  ...ToDoList_todo               
                }
              }`
-  }
+    },
 );
 
 
-//export default ToDoList
 export default ToDoPagination

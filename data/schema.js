@@ -157,8 +157,14 @@ const ToDoPageInfo = new GraphQLObjectType({
         return one;
       } 
     },
-    startCursor: {type: new GraphQLNonNull(GraphQLString)},
-    endCursor: {type: new GraphQLNonNull(GraphQLString)}
+    startCursor: {
+      type: new GraphQLNonNull(GraphQLString),
+       resolve: (args) => {console.log(args); return '1'; }
+    },
+    endCursor: {
+      type: new GraphQLNonNull(GraphQLString),
+      resolve: (args) => {console.log(args); return '5'; }
+    }
   }) 
 });
 
