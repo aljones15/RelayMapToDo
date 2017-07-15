@@ -115,7 +115,7 @@ const ToDo = new GraphQLObjectType({
 });
 
 const ToDoEdge = new GraphQLObjectType({
-  name: 'ToDoEgde',
+  name: 'ToDoEdge',
   description: 'To Do Edge',
   fields: () => ({
     node: {type: ToDo},
@@ -129,6 +129,12 @@ const ToDoPageInfo = new GraphQLObjectType({
   fields: () => ({
     hasPreviousPage: {
       type: new GraphQLNonNull(GraphQLBoolean),
+      args: {
+        first: {type: GraphQLInt}, 
+        after: {type: GraphQLString},
+        last: {type: GraphQLInt}, 
+        before: {type: GraphQLString} 
+      }, 
       resolve: (one, two) => {
         console.log('hasPreviousPage');
         console.log(one);
@@ -138,13 +144,21 @@ const ToDoPageInfo = new GraphQLObjectType({
     },
     hasNextPage: {
       type: new GraphQLNonNull(GraphQLBoolean),
+      args: {
+        first: {type: GraphQLInt}, 
+        after: {type: GraphQLString},
+        last: {type: GraphQLInt}, 
+        before: {type: GraphQLString} 
+      }, 
       resolve: (one, two) => {
         console.log('hasNextPage');
         console.log(one);
         console.log(two);
         return one;
       } 
-    }
+    },
+    startCursor: {type: new GraphQLNonNull(GraphQLString)},
+    endCursor: {type: new GraphQLNonNull(GraphQLString)}
   }) 
 });
 

@@ -22,9 +22,7 @@ export default function AddToDo(city_id, text) {
     {
       mutation,
       variables,
-      onCompleted: (response) => {
-        console.log('Succcess!')
-     },
+      onCompleted: (response) => {},
       onError: err => console.error(err)
     }
   );

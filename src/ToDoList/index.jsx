@@ -64,33 +64,66 @@ const ToDoList = (props) => {
   )
 }
 
-const ToDoPage = (props) => {
-  return(
-  <ul className='ToDoUl' style={ToDoStyle}>
-    <li 
-      style={ToDoAddStyle} 
-      onClick={() => AddToDo(city_id, "test")}>
-     <h3 style={AddToTitle}>Know Something to do here?</h3>
-     <label htmlFor='addtodo' > To Do:</label>
-     <textarea id='addtodo' type='text' style={ToDoRowStyle}/>
-     <button style={ToDoRowStyle}>Submit</button>
-   </li>
- </ul>
-  
+class ToDoPage extends React.Component {
+  constructor(props){
+    super(props);
+  }
+  componentDidMount(){
+    console.log('ToDoPage -> props');
+    console.log(this.props);
+    this.props.relay.loadMore(5, e =>{ console.log(e)});
+  }
+  render(){  
+    return(
+      <ul className='ToDoUl' style={ToDoStyle}>
+        <li 
+          style={ToDoAddStyle} 
+          onClick={() => AddToDo(this.props.city_id, "test")}>
+          <h3 style={AddToTitle}>Know Something to do here?</h3>
+          <label htmlFor='addtodo' > To Do:</label>
+          <textarea id='addtodo' type='text' style={ToDoRowStyle}/>
+          <button style={ToDoRowStyle}>Submit</button>
+       </li>
+     </ul>
   )
-
+  }
 }
-/*
+
 const ToDoPagination = createPaginationContainer(
   ToDoPage,
   {
+    todo: graphql`
+      fragment ToDoList_todo on City {
+        todo(
+          first: 5
+          after: "1"
+        ) @connection(key: "ToDoConnection_todo"){
+          edges {
+            node {
+              ...ToDo
+              }
+            }
+          }
+      }
+    `
+  },
+  {
     direction: 'forward',
-    getConnectionFromProps: (props) => {
+    getConnectionFromProps(props) {
       console.log('getConnectionFromProps');
       console.log(props);
-
+      return props.todo;
     },
-    getVariables: (one, two, three) => {
+    getFragmentVariables(prevVars, totalCount) {
+      console.log('Get Fragment Variable');
+      return {
+        first: prevVars.first,
+        last: preVars.last,
+        count: totalCount,
+        city_id: this.props.city_id
+      };
+    },
+    getVariables(one, two, three) {
       console.log('getVariables');
       console.log(one);
       console.log(two);
@@ -99,21 +132,12 @@ const ToDoPagination = createPaginationContainer(
     query: graphql`
              query ToDoListQuery($cityID: Int! $first: Int! $after: String!) {
                city(cityID: $cityID) {
-                 todo(first: $first after: $after){
-                   edges {
-                     cursor
-                     node {
-                       ...ToDo
-
-                     }
-                   }
-                 }
+                 ...ToDoList_todo               
                }
-             }
-          `
+             }`
   }
 );
-*/
 
-export default ToDoList
-//export default ToDoPagination
+
+//export default ToDoList
+export default ToDoPagination

@@ -27,12 +27,12 @@ type ToDo {
 
 # To Do Connection
 type ToDoConnection {
-  edges: [ToDoEgde]
+  edges: [ToDoEdge]
   pageInfo: ToDoPageInfo
 }
 
 # To Do Edge
-type ToDoEgde {
+type ToDoEdge {
   node: ToDo
   cursor: String!
 }
@@ -44,6 +44,8 @@ input ToDoInput {
 
 # ToDo Page Info
 type ToDoPageInfo {
-  hasPreviousPage: Boolean!
-  hasNextPage: Boolean!
+  hasPreviousPage(first: Int, after: String, last: Int, before: String): Boolean!
+  hasNextPage(first: Int, after: String, last: Int, before: String): Boolean!
+  startCursor: String!
+  endCursor: String!
 }

@@ -9,7 +9,6 @@ class CityView extends React.Component{
     this.state = {open: false};
   }
   toggleToDoList(_){
-    console.log('fetch to dos called');
     this.setState((pstate, props) => { return {open: !pstate.open} });
   }
   toggleStyle(){
