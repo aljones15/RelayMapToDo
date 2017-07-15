@@ -161,7 +161,7 @@ const ToDoPageInfo = new GraphQLObjectType({
       resolve: (args) => {
         console.log('startCursor');
         console.log(args); 
-        return args.todos[0]._id || 1; 
+        return args.todos[0] ?  args.todos[0]._id : 1; 
       }
     },
     endCursor: {
@@ -170,7 +170,7 @@ const ToDoPageInfo = new GraphQLObjectType({
         console.log('endCursor');
         console.log(args);
         const end = args.todos.length - 1; 
-        return args.todos[end]._id || 0; }
+        return args.todos[end] ?  args.todos[end]._id : 1; }
     }
   }) 
 });
