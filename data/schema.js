@@ -93,7 +93,8 @@ const City = new GraphQLObjectType({
           first: first, 
           after: after, 
           last: last, 
-          before: before
+          before: before,
+          todos: FetchToDos(_id)
         };
       } 
     }
@@ -135,11 +136,10 @@ const ToDoPageInfo = new GraphQLObjectType({
         last: {type: GraphQLInt}, 
         before: {type: GraphQLString} 
       }, 
-      resolve: (one, two) => {
+      resolve: (one) => {
         console.log('hasPreviousPage');
         console.log(one);
-        console.log(two);
-        return one;
+        return one.todos.length < one.after;
       }
     },
     hasNextPage: {
@@ -150,20 +150,27 @@ const ToDoPageInfo = new GraphQLObjectType({
         last: {type: GraphQLInt}, 
         before: {type: GraphQLString} 
       }, 
-      resolve: (one, two) => {
+      resolve: (one) => {
         console.log('hasNextPage');
         console.log(one);
-        console.log(two);
-        return one;
+        return one.todos.length > one.after;
       } 
     },
     startCursor: {
       type: new GraphQLNonNull(GraphQLString),
-       resolve: (args) => {console.log(args); return '1'; }
+      resolve: (args) => {
+        console.log('startCursor');
+        console.log(args); 
+        return args.todos[0]._id || 1; 
+      }
     },
     endCursor: {
       type: new GraphQLNonNull(GraphQLString),
-      resolve: (args) => {console.log(args); return '5'; }
+      resolve: (args) => {
+        console.log('endCursor');
+        console.log(args);
+        const end = args.todos.length - 1; 
+        return args.todos[end]._id || 0; }
     }
   }) 
 });
@@ -186,10 +193,8 @@ const ToDoConnection = new GraphQLObjectType({
    },
     pageInfo: {
       type: ToDoPageInfo,
-      resolve: (one, two) => {
-        console.log('PageInfo');
-        console.log(one);
-        console.log(two);
+      resolve: (one) => {
+        return one;
       }
     }
   })

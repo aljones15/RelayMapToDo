@@ -12,58 +12,6 @@ import {QueryRenderer, graphql, createPaginationContainer} from 'react-relay';
 import environment from '../../data/relayEnv';
 import AddToDo from './CreateToDoMutation.jsx';
 
-const ToDoList = (props) => {
-  const city_id = props.city_id;
-  return(
-     <QueryRenderer
-           environment={environment}
-           query={graphql`
-             query ToDoListQuery($cityID: Int! $first: Int! $after: String!) {
-               city(cityID: $cityID) {
-                 todo(first: $first after: $after){
-                   edges {
-                     cursor
-                     node {
-                       ...ToDo
-
-                     }
-                   }
-                 }
-               }
-             }
-          `}
-           variables={{
-             cityID: city_id,
-             first: 5,
-             after: "0"
-           }}
-           render={({error, props}) => {
-             if(error){
-               return <div>{error.message}</div>
-             } else if (props) {
-              return(
-                 <ul className='ToDoUl' style={ToDoStyle}>
-                   <li 
-                     style={ToDoAddStyle} 
-                     onClick={() => AddToDo(city_id, "test")}>
-                     <h3 style={AddToTitle}>Know Something to do here?</h3>
-                     <label htmlFor='addtodo' > To Do:</label>
-                     <textarea id='addtodo' type='text' style={ToDoRowStyle}/>
-                     <button style={ToDoRowStyle}>Submit</button>
-                   </li>
-                   { 
-                     props.city.todo.edges.map(({cursor, node}, index) => {
-                     return(<ToDo data={node} key={index + '_todo'}  />); })
-                   }
-                 </ul>);
-             }
-             return <div>Loading</div>
-           }
-          }
-      />
-  )
-}
-
 class ToDoPage extends React.Component {
   constructor(props){
     super(props);
@@ -105,7 +53,7 @@ const ToDoPagination = createPaginationContainer(
       fragment ToDoList_todo on City {
         todo(
           first: $first
-          after: $last
+          after: $after
         ) @connection(key: "ToDoConnection_todo"){
           edges {
             node {
@@ -129,9 +77,7 @@ const ToDoPagination = createPaginationContainer(
       console.log(totalCount);
       return {
         first: preVars.first || 1,
-        last: preVars.last,
-        after: preVars.after || 5,
-        count: totalCount || 0
+        after: preVars.after || 5
       };
     },
     getVariables(one, two) {
@@ -139,13 +85,13 @@ const ToDoPagination = createPaginationContainer(
       console.log(one);
       console.log(two);
       return {
-        count: two.count, 
-        cursor: two.cursor,
+        first: one.first || 1,
+        after: one.after || 5,
         cityID: one.city_id
       };
     },
     query: graphql`
-             query ToDoListQuery($cityID: Int!) {
+             query ToDoListQuery($cityID: Int! $first: Int! $after: String) {
                city(cityID: $cityID) {
                  ...ToDoList_todo               
                }
