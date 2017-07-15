@@ -10,7 +10,10 @@ export class City {
   }
 }
 
-
+/**
+*  Class for Graph QL Nodes
+* @ param {Object} is a todo
+*/
 export class QlNode {
   constructor(item){
     this.cursor = String(item._id);

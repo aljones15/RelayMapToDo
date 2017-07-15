@@ -87,8 +87,14 @@ const City = new GraphQLObjectType({
         last: {type: GraphQLInt}, 
         before: {type: GraphQLString} 
       },
-      resolve: ({_id}, {first, after}) => {
-        return PaginateToDo(after, first, _id);
+      resolve: ({_id}, {first, after, last, before}) => {
+        return {
+          id: _id, 
+          first: first, 
+          after: after, 
+          last: last, 
+          before: before
+        };
       } 
     }
   })
@@ -121,8 +127,24 @@ const ToDoPageInfo = new GraphQLObjectType({
   name: 'ToDoPageInfo',
   description: 'ToDo Page Info',
   fields: () => ({
-    hasPreviousPage: {type: new GraphQLNonNull(GraphQLBoolean)},
-    hasNextPage: {type: new GraphQLNonNull(GraphQLBoolean)}
+    hasPreviousPage: {
+      type: new GraphQLNonNull(GraphQLBoolean),
+      resolve: (one, two) => {
+        console.log('hasPreviousPage');
+        console.log(one);
+        console.log(two);
+        return one;
+      }
+    },
+    hasNextPage: {
+      type: new GraphQLNonNull(GraphQLBoolean),
+      resolve: (one, two) => {
+        console.log('hasNextPage');
+        console.log(one);
+        console.log(two);
+        return one;
+      } 
+    }
   }) 
 });
 
@@ -132,9 +154,24 @@ const ToDoConnection = new GraphQLObjectType({
   fields: () => ({
     edges: {
       type: new GraphQLList(ToDoEdge),
-      resolve: (edges) => edges
+      resolve: (args) => { 
+       if(args.after && args.first){
+          return PaginateToDo(args.after, args.first, args.id); 
+        }
+        if(args.before && args.last){
+          throw 'PAGINATE BEFORE NOT IMPLEMENTED YET'; 
+        }
+        return [];
+      }
    },
-    pageInfo: {type: ToDoPageInfo}
+    pageInfo: {
+      type: ToDoPageInfo,
+      resolve: (one, two) => {
+        console.log('PageInfo');
+        console.log(one);
+        console.log(two);
+      }
+    }
   })
 });
 

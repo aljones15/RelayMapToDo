@@ -18,9 +18,9 @@ const ToDoList = (props) => {
      <QueryRenderer
            environment={environment}
            query={graphql`
-             query ToDoListQuery($cityID: Int!) {
+             query ToDoListQuery($cityID: Int! $first: Int! $after: String!) {
                city(cityID: $cityID) {
-                 todo(first: 5 after: "0"){
+                 todo(first: $first after: $after){
                    edges {
                      cursor
                      node {
