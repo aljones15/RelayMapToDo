@@ -9,7 +9,6 @@ import {
   AddToDoSubmit
 } from './style';
 import {QueryRenderer, graphql, createPaginationContainer} from 'react-relay';
-import environment from '../../data/relayEnv';
 import AddToDo from './CreateToDoMutation.jsx';
 
 class ToDoPage extends React.Component {
