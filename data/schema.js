@@ -136,10 +136,11 @@ const ToDoPageInfo = new GraphQLObjectType({
         last: {type: GraphQLInt}, 
         before: {type: GraphQLString} 
       }, 
-      resolve: (one) => {
-        console.log('hasPreviousPage');
-        console.log(one);
-        return one.todos.length < one.after;
+      resolve: ({after, todos}) => {
+        const current = todos.find(t => t._id == after);
+        const index = todos.indexOf(current);
+        const before = todos.slice(0, index);
+        return before.length > 0;
       }
     },
     hasNextPage: {
@@ -150,10 +151,11 @@ const ToDoPageInfo = new GraphQLObjectType({
         last: {type: GraphQLInt}, 
         before: {type: GraphQLString} 
       }, 
-      resolve: (one) => {
-        console.log('hasNextPage');
-        console.log(one);
-        return one.todos.length > one.after;
+      resolve: (args) => {
+        const current = args.todos.find(t => t._id == args.id);
+        const index = args.todos.indexOf(current) + args.first;
+        const after = args.todos.slice(index, index + args.first);
+        return after.length > 0;
       } 
     },
     startCursor: {

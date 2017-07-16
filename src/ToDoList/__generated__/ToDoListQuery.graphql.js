@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule ToDoListQuery.graphql
- * @generated SignedSource<<2d5c6322155dc6bc03967087ef61702c>>
- * @relayHash 2fd355cab98a32f9c2f7a9413fd88b5e
+ * @generated SignedSource<<4b529846e98c8b3f174463545e8f68cd>>
+ * @relayHash ecf74b59ad6dfa4372368d0f086630b0
  * @flow
  * @nogrep
  */
@@ -22,8 +22,8 @@ import type {ConcreteBatch} from 'relay-runtime';
 /*
 query ToDoListQuery(
   $cityID: Int!
-  $first: Int!
-  $after: String
+  $count: Int!
+  $cursor: String
 ) {
   city(cityID: $cityID) {
     ...ToDoList_todo
@@ -31,7 +31,7 @@ query ToDoListQuery(
 }
 
 fragment ToDoList_todo on City {
-  todo(first: $first, after: $after) {
+  todo(first: $count, after: $cursor) {
     edges {
       node {
         ...ToDo
@@ -66,13 +66,13 @@ const batch /*: ConcreteBatch*/ = {
       },
       {
         "kind": "LocalArgument",
-        "name": "first",
+        "name": "count",
         "type": "Int!",
         "defaultValue": null
       },
       {
         "kind": "LocalArgument",
-        "name": "after",
+        "name": "cursor",
         "type": "String",
         "defaultValue": null
       }
@@ -121,13 +121,13 @@ const batch /*: ConcreteBatch*/ = {
       },
       {
         "kind": "LocalArgument",
-        "name": "first",
+        "name": "count",
         "type": "Int!",
         "defaultValue": null
       },
       {
         "kind": "LocalArgument",
-        "name": "after",
+        "name": "cursor",
         "type": "String",
         "defaultValue": null
       }
@@ -158,13 +158,13 @@ const batch /*: ConcreteBatch*/ = {
               {
                 "kind": "Variable",
                 "name": "after",
-                "variableName": "after",
+                "variableName": "cursor",
                 "type": "String"
               },
               {
                 "kind": "Variable",
                 "name": "first",
-                "variableName": "first",
+                "variableName": "count",
                 "type": "Int"
               }
             ],
@@ -278,13 +278,13 @@ const batch /*: ConcreteBatch*/ = {
               {
                 "kind": "Variable",
                 "name": "after",
-                "variableName": "after",
+                "variableName": "cursor",
                 "type": "String"
               },
               {
                 "kind": "Variable",
                 "name": "first",
-                "variableName": "first",
+                "variableName": "count",
                 "type": "Int"
               }
             ],
@@ -298,7 +298,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query ToDoListQuery(\n  $cityID: Int!\n  $first: Int!\n  $after: String\n) {\n  city(cityID: $cityID) {\n    ...ToDoList_todo\n  }\n}\n\nfragment ToDoList_todo on City {\n  todo(first: $first, after: $after) {\n    edges {\n      node {\n        ...ToDo\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment ToDo on ToDo {\n  text\n  likes\n  _id\n}\n"
+  "text": "query ToDoListQuery(\n  $cityID: Int!\n  $count: Int!\n  $cursor: String\n) {\n  city(cityID: $cityID) {\n    ...ToDoList_todo\n  }\n}\n\nfragment ToDoList_todo on City {\n  todo(first: $count, after: $cursor) {\n    edges {\n      node {\n        ...ToDo\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment ToDo on ToDo {\n  text\n  likes\n  _id\n}\n"
 };
 
 module.exports = batch;

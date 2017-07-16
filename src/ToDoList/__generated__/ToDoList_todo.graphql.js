@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule ToDoList_todo.graphql
- * @generated SignedSource<<c83c3cb75dd97c52914a4d683ecf3450>>
+ * @generated SignedSource<<6511eccedb775192be31cc419c4b2d04>>
  * @flow
  * @nogrep
  */
@@ -28,12 +28,12 @@ const fragment /*: ConcreteFragment*/ = {
   "argumentDefinitions": [
     {
       "kind": "RootArgument",
-      "name": "first",
+      "name": "count",
       "type": "Int"
     },
     {
       "kind": "RootArgument",
-      "name": "after",
+      "name": "cursor",
       "type": "String"
     }
   ],
@@ -41,8 +41,8 @@ const fragment /*: ConcreteFragment*/ = {
   "metadata": {
     "connection": [
       {
-        "count": "first",
-        "cursor": "after",
+        "count": "count",
+        "cursor": "cursor",
         "direction": "forward",
         "path": [
           "todo"

@@ -52,8 +52,8 @@ const ToDoPagination = createPaginationContainer(
     todo: graphql`
       fragment ToDoList_todo on City {
         todo(
-          first: $first
-          after: $after
+          first: $count
+          after: $cursor
         ) @connection(key: "ToDoConnection_todo"){
           edges {
             node {
@@ -80,18 +80,18 @@ const ToDoPagination = createPaginationContainer(
         after: preVars.after || 5
       };
     },
-    getVariables(one, two) {
-      console.log('getVariables');
-      console.log(one);
-      console.log(two);
+    getVariables(props, {count, cursor}, fragmentVariables) {
+      console.log('getVariable');
+      console.log('count -> ' + count);
+      console.log('cursor -> ' + cursor);
       return {
-        first: one.first || 1,
-        after: one.after || 5,
-        cityID: one.city_id
+        count: count || 5,
+        cursor: cursor || '1',
+        cityID: props.city_id
       };
     },
     query: graphql`
-             query ToDoListQuery($cityID: Int! $first: Int! $after: String) {
+             query ToDoListQuery($cityID: Int! $count: Int! $cursor: String) {
                city(cityID: $cityID) {
                  ...ToDoList_todo               
                }
