@@ -13,8 +13,8 @@ Using React, Relay, Graph QL, and Express construct a simple google map apps tha
 - Cucumber
 
 ## ToDo
-- [] Finish Implementing PaginationContainer
-- [] https://facebook.github.io/relay/docs/pagination-container.html
+- [ ] Finish Implementing PaginationContainer
+- [ ] https://facebook.github.io/relay/docs/pagination-container.html
 
 ### Install
 ```
