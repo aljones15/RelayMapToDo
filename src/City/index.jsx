@@ -25,7 +25,7 @@ class CityView extends React.Component{
 	  <div className='ToDoListClose' 
             style={ToDoStyle.closeBar} 
             onClick={this.toggleToDoList.bind(this)}>Close</div>
-          <ToDoList city_id={this.props.item._id} list={[1,2,3,4,5]} />
+          <ToDoList city_id={this.props.item._id} />
 	</div>
       );
     } else {

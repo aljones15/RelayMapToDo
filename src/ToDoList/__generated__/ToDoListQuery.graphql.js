@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule ToDoListQuery.graphql
- * @generated SignedSource<<4b529846e98c8b3f174463545e8f68cd>>
- * @relayHash ecf74b59ad6dfa4372368d0f086630b0
+ * @generated SignedSource<<e9f5096cdbd99556843cc825bbe4afc9>>
+ * @relayHash 0d647e4a81ebe14131bb0298f4fe024a
  * @flow
  * @nogrep
  */
@@ -290,7 +290,7 @@ const batch /*: ConcreteBatch*/ = {
             ],
             "handle": "connection",
             "name": "todo",
-            "key": "ToDoConnection_todo",
+            "key": "Connection_todo",
             "filters": null
           }
         ],

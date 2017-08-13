@@ -22,9 +22,18 @@ function startAppServer(callback) {
         {
           exclude: /node_modules/,
           loader: 'babel-loader',
-          test: /\.jsx?$/,
-        }
-      ]
+          test: /\.(js|jsx)?$/,
+        }],
+        rules: [
+          {
+          test: /\.jsx$/,
+          exclude: /(node_modules)/,
+          use: {
+            loader: 'babel-loader',
+            options: {}
+          }
+          }
+        ]
     },
     output: {filename: './index.js', path: '/', publicPath: '/src/'}
   });

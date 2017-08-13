@@ -45,7 +45,7 @@ class ToDoPage extends React.Component {
   }
 }
 
-const ToDoPagination = createPaginationContainer(
+const ToDoList = createPaginationContainer(
   ToDoPage,
   {
     todo: graphql`
@@ -53,7 +53,7 @@ const ToDoPagination = createPaginationContainer(
         todo(
           first: $count
           after: $cursor
-        ) @connection(key: "ToDoConnection_todo"){
+        ) @connection(key: "Connection_todo"){
           edges {
             node {
               ...ToDo
@@ -71,9 +71,6 @@ const ToDoPagination = createPaginationContainer(
       return props.todo;
     },
     getFragmentVariables(preVars, totalCount) {
-      console.log('Get Fragment Variable');
-      console.log(preVars);
-      console.log(totalCount);
       return {
         first: preVars.first || 1,
         after: preVars.after || 5
@@ -99,4 +96,4 @@ const ToDoPagination = createPaginationContainer(
 );
 
 
-export default ToDoPagination
+export default ToDoList

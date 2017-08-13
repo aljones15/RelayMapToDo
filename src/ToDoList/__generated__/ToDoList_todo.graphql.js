@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule ToDoList_todo.graphql
- * @generated SignedSource<<6511eccedb775192be31cc419c4b2d04>>
+ * @generated SignedSource<<f20d5a80afc9d0153a2e048b4702b085>>
  * @flow
  * @nogrep
  */
@@ -57,7 +57,7 @@ const fragment /*: ConcreteFragment*/ = {
       "alias": "todo",
       "args": null,
       "concreteType": "ToDoConnection",
-      "name": "__ToDoConnection_todo_connection",
+      "name": "__Connection_todo_connection",
       "plural": false,
       "selections": [
         {
