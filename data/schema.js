@@ -177,11 +177,13 @@ const ToDoConnection = new GraphQLObjectType({
   fields: () => ({
     edges: {
       type: new GraphQLList(ToDoEdge),
-      resolve: (args) => { 
-       if(args.after && args.first){
+      resolve: (args) => {
+       console.log('ToDoConnect edges args ');
+       console.log(args);
+       if(args.first){
           return PaginateToDo(args.after, args.first, args.id); 
         }
-        if(args.before && args.last){
+        if(args.last){
           throw 'PAGINATE BEFORE NOT IMPLEMENTED YET'; 
         }
         return [];

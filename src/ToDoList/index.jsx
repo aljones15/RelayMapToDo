@@ -10,26 +10,27 @@ import {
 } from './style';
 import {QueryRenderer, graphql, createPaginationContainer} from 'react-relay';
 import AddToDo from './CreateToDoMutation.jsx';
+import environment from '../../data/relayEnv';
+
+const rootQuery = graphql`
+      query ToDoListQuery(
+        $cityID: Int! 
+        $count: Int! 
+        $cursor: String) {
+          city(cityID: $cityID) {
+            ...ToDoList_todo               
+          }
+      }`;
+
 
 class ToDoPage extends React.Component {
   constructor(props){
     super(props);
   }
-  componentDidMount(){
-    /*
-    console.log('ToDoPage -> props');
-    console.log(this.props);
-    this.props.relay.loadMore(5, e =>{ 
-      console.log('loadMore ->');
-      console.log(e)});
-    console.log('isLoading -> ' + this.props.relay.isLoading());
-    console.log('hasMore -> ' + this.props.relay.hasMore());
-    */
-    console.log(this.props.relay.refetchConnection());
-  }
   render(){
-    console.log('render ->');
-    console.log(this.props); 
+    console.log('ToDoPage ->');
+    console.log(this.props);
+    const {todo} = this.props; 
     return(
       <ul className='ToDoUl' style={ToDoStyle}>
         <li 
@@ -40,8 +41,12 @@ class ToDoPage extends React.Component {
           <textarea id='addtodo' type='text' style={ToDoRowStyle}/>
           <button style={ToDoRowStyle}>Submit</button>
        </li>
+       {todo.todo.edges.map((todo, index) => <li key={`todo?${index}`} style={ToDoAddStyle}>{todo.node.text}</li>)}
      </ul>
   )
+  }
+  loadMore(){
+    this.props.relay.loadMore(5, e => console.log(e))
   }
 }
 
@@ -53,11 +58,17 @@ const ToDoList = createPaginationContainer(
         todo(
           first: $count
           after: $cursor
-        ) @connection(key: "Connection_todo"){
-          edges {
-            node {
-              ...ToDo
+       ) @connection(key: "ToDoConnection_todo"){
+            edges {
+              node {
+                text
+                likes
               }
+              cursor
+            }
+            pageInfo {
+              endCursor
+              hasNextPage
             }
           }
       }
@@ -68,32 +79,46 @@ const ToDoList = createPaginationContainer(
     getConnectionFromProps(props) {
       console.log('getConnectionFromProps');
       console.log(props);
-      return props.todo;
+      return props.todo && props.todo.todo;
     },
     getFragmentVariables(preVars, totalCount) {
       return {
-        first: preVars.first || 1,
-        after: preVars.after || 5
-      };
+         ...preVars,
+         totalCount         
+       };
     },
-    getVariables(props, {count, cursor}, fragmentVariables) {
-      console.log('getVariable');
-      console.log('count -> ' + count);
-      console.log('cursor -> ' + cursor);
+    getVariables(one, {count, cursor}, frags) {
       return {
-        count: count || 5,
-        cursor: cursor || '1',
-        cityID: props.city_id
+        count,
+        cursor,
+        cityID: one.city_id
       };
     },
-    query: graphql`
-             query ToDoListQuery($cityID: Int! $count: Int! $cursor: String) {
-               city(cityID: $cityID) {
-                 ...ToDoList_todo               
-               }
-             }`
-    },
+    query: rootQuery },
 );
 
+const queryRenderer = ({city_id}) => {
+  return(
+    <QueryRenderer
+      environment={environment}
+      query={rootQuery}
+      variables={{cityID: city_id, count:5, cursor: null}}
+           render={
+             ({error, props}) => {
+               if (error) {
+                 return <div>{error.message}</div>;
+               } else if (props) {
+                 return(
+                   <ToDoList city_id={city_id} todo={props.city} />
+                )
+               }
+                 return <div>Loading</div>;
+             }
+           }
+         />
+ 
+  );
+};
 
-export default ToDoList
+export default queryRenderer;
+
