@@ -16,11 +16,13 @@
   "author": "liminal18",
   "license": "ISC",
   "dependencies": {
+    "aphrodite": "^1.2.3",
     "es6-promise": "^4.1.0",
     "google-map-react": "^0.24.0",
     "graphql": "^0.9.6",
     "graphql-relay": "^0.5.1",
     "isomorphic-fetch": "https://registry.npmjs.org/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz",
+    "lodash": "^4.17.4",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-relay": "^1.0.0"

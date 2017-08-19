@@ -178,9 +178,7 @@ const ToDoConnection = new GraphQLObjectType({
     edges: {
       type: new GraphQLList(ToDoEdge),
       resolve: (args) => {
-       console.log('ToDoConnect edges args ');
-       console.log(args);
-       if(args.first){
+        if(args.first){
           return PaginateToDo(args.after, args.first, args.id); 
         }
         if(args.last){
