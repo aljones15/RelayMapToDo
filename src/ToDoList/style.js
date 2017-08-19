@@ -41,22 +41,6 @@ export const style = StyleSheet.create({
   }
 });
 
-export const ToDoStyle = {
-  display: 'flex',
-  flexGrow: 1,
-  flexShrink: 1,
-  flexDirection: 'column',
-  padding: '0px',
-};
-
-export const ToDoAddStyle = {
-  display: 'flex',
-  flexGrow: 2,
-  flexShrink: 2,
-  color: '#FFFFFF',
-  flexDirection: 'column',
-};
-
 export const ToDoRowStyle = {
   display: 'flex',
   flexGrow: 1,

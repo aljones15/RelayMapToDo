@@ -1,8 +1,8 @@
 import React from 'react';
-import {IconStyle, ListStyle, ToDoStyle} from './style';
+import { style } from './style';
 import ToDoList from '../ToDoList/index.jsx';
 import {graphql, createFragmentContainer } from 'react-relay';
-
+import { css } from 'aphrodite';
 class CityView extends React.Component{
   constructor(props){
     super(props);
@@ -13,17 +13,16 @@ class CityView extends React.Component{
   }
   toggleStyle(){
     if(this.state.open){
-      return ListStyle;
+      return css(style.List) + " City";
     } else {
-      return IconStyle;
+      return css(style.Icon) + " City";
     }
   }
   toggle(){
     if(this.state.open){ 
       return(
-	<div className='ToDoList' style={ToDoStyle.container}>
-	  <div className='ToDoListClose' 
-            style={ToDoStyle.closeBar} 
+	<div className={css(style.container) + ' ToDoList'}>
+	  <div className={css(style.CloseBar) + ' ToDoListClose'}
             onClick={this.toggleToDoList.bind(this)}>Close</div>
           <ToDoList city_id={this.props.item._id} />
 	</div>
@@ -39,8 +38,7 @@ class CityView extends React.Component{
   render(){
     return(
       <div 
-        className='City' 
-        style={this.toggleStyle()} 
+        className={this.toggleStyle()} 
       >
       {
         this.toggle()

@@ -1,12 +1,12 @@
 import React from 'react';
-import ToDoStyle from './style';
+import { style } from './style';
 import {graphql, createFragmentContainer } from 'react-relay';
-
+import { css } from 'aphrodite';
 
 const ToDo = createFragmentContainer(
 ({data}) => {
   return(
-    <li style={ToDoStyle}>
+    <li className={css(style.ToDo)}>
       {data._id} | {data.text} | {data.likes}
     </li>		  
   )
