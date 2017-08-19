@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 /***
  * basic class for the in memory city database
  */
@@ -68,10 +70,20 @@ export function FindToDo(id){
 
 export function PaginateToDo(todo_id, first, city_id){
   let todos = FetchToDos(city_id);
-  const after = todos.find((td) => td._id === todo_id);
+  console.log(todos);
+  const after = todos.find((td) => td._id == todo_id);
   let index = todos.indexOf(after);
-  index = index < 0 ? 0 : index;
-  todos = todos.slice(index, first).map((item) => new QlNode(item));
+  if(todo_id == null){
+    index = 0;
+  }
+  if(index < 0){
+    return [];
+  }
+  console.log('First -> ' + first);
+  let slice = _.take(_.drop(todos, index), first);
+  console.log('Slice -> ');
+  console.log(slice);
+  todos = slice.map((item) => new QlNode(item));
   return todos;
 }
 

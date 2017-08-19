@@ -21,6 +21,8 @@ import {
   GraphQLInputObjectType
 } from 'graphql';
 
+import _ from 'lodash';
+
 /***
 * graph QL function that maps Queries to functions that fetch the correct obj
 * function return is destructured to all us acces to the interface ani fields

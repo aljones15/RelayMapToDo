@@ -21,7 +21,6 @@ const rootQuery = graphql`
           }
       }`;
 
-
 class ToDoPage extends React.Component {
   constructor(props){
     super(props);
@@ -40,11 +39,8 @@ class ToDoPage extends React.Component {
   }
   paginateToDo(todos){
     const {count, page} = this.state;
-    const pages = _.chunk(todos, count);
-    console.log('to dos and pages');
-    console.log(todos);
-    console.log(pages);
-    if(pages.length == 0 || !pages[page]){
+    const pages = _.chunk(_.uniqBy(todos, 'cursor'), count);
+   if(pages.length == 0 || !pages[page]){
       return [];
     }
     return pages[page].map(this.makeToDo);
@@ -53,10 +49,19 @@ class ToDoPage extends React.Component {
     this.setState((pstate, props) => 
       ({page: pstate.page - 1 <= 0 ? 0 : pstate.page - 1}))
   }
-  forward(){
+  forward(todos){
+    const pages = _.uniqBy(todos, 'cursor');
+    const {count, page} = this.state;
+    const total = count * (page + 1);
+    if(total < pages.length){
+      this.loadMore();
+      this.setState((pstate, props) => 
+        ({page: pstate.page + 1})) 
+    }
+ }
+  add(text){
+    AddToDo(this.props.city_id, this.state.text);
     this.loadMore();
-    this.setState((pstate, props) => 
-      ({page: pstate.page + 1}))
   }
   render(){
     const {todo} = this.props; 
@@ -74,7 +79,7 @@ class ToDoPage extends React.Component {
           />
           <button 
             type='button'
-            onClick={() => AddToDo(this.props.city_id, this.state.text)} 
+            onClick={ this.add.bind(this) } 
             className={css(style.toDoRow, style.row)}
           >Submit</button>
         </form>
@@ -93,7 +98,8 @@ class ToDoPage extends React.Component {
           </strong>
           <button 
             className={css(style.pagBtn)} 
-            onClick={this.forward.bind(this)}>Forward
+            onClick={() => this.forward.bind(this)(todo.todo.edges)}>
+            Forward
           </button>
         </div>
      </div>

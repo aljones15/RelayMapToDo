@@ -1,5 +1,6 @@
 const K_WIDTH = 40;
 const K_HEIGHT = 40;
+import { StyleSheet } from 'aphrodite';
 
 // initially any map object has left top corner at lat lng coordinates
 // it's on you to set object origin to 0,0 coordinates
