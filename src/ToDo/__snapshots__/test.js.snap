@@ -2,18 +2,7 @@
 
 exports[`ToDo Should match a snapshot 1`] = `
 <li
-  style={
-    Object {
-      "backgroundColor": "rgba(50,50,50,0.5)",
-      "color": "#FFFFFF",
-      "display": "flex",
-      "flexGrow": 1,
-      "flexShrink": 1,
-      "height": "25px",
-      "maxWidth": "100%",
-      "padding": "5px",
-    }
-  }
+  className="ToDo_gfjdxk"
 >
   1
    | 
