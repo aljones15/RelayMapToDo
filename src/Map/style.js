@@ -1,4 +1,5 @@
 import { flex, flatten } from '../../style';
+import { StyleSheet } from 'aphrodite';
 
 const containerSize = flex(1, 1);
 const container = {
