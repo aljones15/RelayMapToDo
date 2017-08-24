@@ -79,7 +79,7 @@ class ToDoPage extends React.Component {
           />
           <button 
             type='button'
-            onClick={ this.add.bind(this) } 
+            onClick={ () => this.add() } 
             className={css(style.toDoRow, style.row)}
           >Submit</button>
         </form>
@@ -89,7 +89,11 @@ class ToDoPage extends React.Component {
         <div className={css(style.row)}>
           <button 
             className={css(style.pagBtn)} 
-            onClick={this.back.bind(this)}>Back
+            onClick={(e) => {
+              this.back()
+              e.stopPropagation();
+              e.preventDefault();
+            }}>Back
           </button>
           <strong
             className={css(style.pagBtn)} 
@@ -98,7 +102,11 @@ class ToDoPage extends React.Component {
           </strong>
           <button 
             className={css(style.pagBtn)} 
-            onClick={() => this.forward.bind(this)(todo.todo.edges)}>
+            onClick={(e) =>{
+              this.forward(todo.todo.edges)
+              e.stopPropagation();
+              e.preventDefault();
+            }}>
             Forward
           </button>
         </div>

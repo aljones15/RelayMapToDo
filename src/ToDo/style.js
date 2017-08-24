@@ -1,7 +1,7 @@
 import { StyleSheet } from 'aphrodite';
 
 export const style = StyleSheet.create({
-  ToDo: {
+  ToDoContainer: {
     display: 'flex',
     maxWidth: '100%',
     flexGrow: 1,

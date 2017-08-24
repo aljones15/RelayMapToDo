@@ -6,7 +6,7 @@ import { css } from 'aphrodite';
 const ToDo = createFragmentContainer(
 ({data}) => {
   return(
-    <li className={css(style.ToDo)}>
+    <li className={css(style.ToDoContainer)}>
       {data._id} | {data.text} | {data.likes}
     </li>		  
   )
