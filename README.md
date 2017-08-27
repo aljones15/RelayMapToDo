@@ -13,8 +13,11 @@ Using React, Relay, Graph QL, and Express construct a simple google map apps tha
 - Cucumber
 
 ## ToDo
-- [ ] Finish Implementing PaginationContainer
-- [ ] https://facebook.github.io/relay/docs/pagination-container.html
+- [x] Finish Implementing PaginationContainer
+- [x] https://facebook.github.io/relay/docs/pagination-container.html
+- [ ] Work on the Aphrodite Styles
+- [ ] Create Like and Dislike mutations
+- [ ] Try to unse a Fragment for the edges
 
 ### Install
 ```
