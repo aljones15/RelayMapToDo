@@ -22,12 +22,17 @@ export const style = StyleSheet.create({
     padding: '0px',
     color: 'white'
   },
+  bordered: {
+    border: '1px solid black'
+  },
   toDoAdd: {
     display: 'flex',
     flexGrow: 2,
     flexShrink: 2,
+    height: '30%',
     color: '#FFFFFF',
     flexDirection: 'column',
+    padding: '3px'
   },
   toDoRow: {
     display: 'flex',

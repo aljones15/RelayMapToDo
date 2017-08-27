@@ -1,6 +1,6 @@
 import React from 'react';
 import ToDo from '../ToDo/index.jsx';
-import { AddToTitle, style } from './style';
+import { style } from './style';
 import {
   QueryRenderer, 
   graphql, 
@@ -33,7 +33,7 @@ class ToDoPage extends React.Component {
     return(
       <li 
         key={`todo?${index}`} 
-        className={css(style.toDoRow)}>
+        className={css(style.toDo, style.bordered)}>
       {todo.node.text}
       </li>);
   }
@@ -67,7 +67,7 @@ class ToDoPage extends React.Component {
     const {todo} = this.props; 
     return(
       <div id='todoHolder' className={css(style.toDo)} >
-        <form className={css(style.toDo)}>
+        <form className={css(style.toDoAdd)}>
           <h3  className={css(style.toDoRow, style.selfCenter)}>
             Know Something to do here?
           </h3>
@@ -83,7 +83,7 @@ class ToDoPage extends React.Component {
             className={css(style.toDoRow, style.row)}
           >Submit</button>
         </form>
-        <ul className='ToDoUl' className={css(style.toDo)}>
+        <ul className='ToDoUl' className={css(style.toDoAdd)}>
                {this.paginateToDo.bind(this)(todo.todo.edges)}
         </ul>
         <div className={css(style.row)}>
