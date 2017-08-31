@@ -6,7 +6,7 @@ function fetchQuery(
   operation,
   variables,
   cacheConfig,
-  uploadables,
+  uploadables
 ) {
   return fetch('/graphql', {
     method: 'POST',
