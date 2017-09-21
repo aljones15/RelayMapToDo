@@ -11,6 +11,12 @@ import environment from '../../data/relayEnv';
 import _ from 'lodash';
 import { css } from 'aphrodite';
 
+// negates double clicks sent to google maps
+const negateClick = (e) => {
+  e.preventDefault();
+  return e.stopPropagation();
+}
+
 const rootQuery = graphql`
       query ToDoListQuery(
         $cityID: Int! 
@@ -66,7 +72,13 @@ class ToDoPage extends React.Component {
   render(){
     const {todo} = this.props; 
     return(
-      <div id='todoHolder' className={css(style.toDo)} >
+      <div 
+        id='todoHolder' 
+        className={css(style.toDo)} 
+        onDoubleClick={negateClick}
+        onClick={negateClick}
+        onDrag={negateClick}
+      >
         <form className={css(style.toDoAdd)}>
           <h3  className={css(style.toDoRow, style.selfCenter)}>
             Know Something to do here?
@@ -106,7 +118,13 @@ class ToDoPage extends React.Component {
               this.forward(todo.todo.edges)
               e.stopPropagation();
               e.preventDefault();
-            }}>
+            }}
+            onDoubleClick={(e) => {
+              console.log('stopped double click');
+              e.stopPropagation();
+              return e.preventDefault();
+            }}
+          >
             Forward
           </button>
         </div>
