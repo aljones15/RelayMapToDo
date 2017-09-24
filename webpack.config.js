@@ -19,7 +19,6 @@ module.exports = (env) => ({
           exclude: /(node_modules)/,
           use: [
             'babel-loader',
-            require.resolve('./hashbagloader')
           ]
           },
         {
