@@ -1,4 +1,4 @@
-# A city to be used on the map
+"""A city to be used on the map"""
 type City {
   _id: Int!
   lat: Float
@@ -6,18 +6,18 @@ type City {
   todo(first: Int, after: String, last: Int, before: String): ToDoConnection
 }
 
-# Mutations for the To Do List
+"""Mutations for the To Do List"""
 type Mutation {
   createToDo(input: ToDoInput): ToDo
 }
 
-# An array of Cities
+"""An array of Cities"""
 type Query {
   cities: [City]
   city(cityID: Int!): City
 }
 
-# A To Do for a city
+"""A To Do for a city"""
 type ToDo {
   city_id: Int!
   text: String
@@ -25,13 +25,13 @@ type ToDo {
   _id: Int!
 }
 
-# To Do Connection
+"""To Do Connection"""
 type ToDoConnection {
   edges: [ToDoEdge]
   pageInfo: ToDoPageInfo
 }
 
-# To Do Edge
+"""To Do Edge"""
 type ToDoEdge {
   node: ToDo
   cursor: String!
@@ -42,7 +42,7 @@ input ToDoInput {
   text: String
 }
 
-# ToDo Page Info
+"""ToDo Page Info"""
 type ToDoPageInfo {
   hasPreviousPage(first: Int, after: String, last: Int, before: String): Boolean!
   hasNextPage(first: Int, after: String, last: Int, before: String): Boolean!
