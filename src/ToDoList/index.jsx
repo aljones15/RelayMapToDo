@@ -66,8 +66,10 @@ class ToDoPage extends React.Component {
     }
  }
   add(text){
-    AddToDo(this.props.city_id, this.state.text);
-    this.loadMore();
+    if (this.state.text) {
+      AddToDo(this.props.city_id, this.state.text);
+      this.loadMore();
+    };
   }
   render(){
     const {todo} = this.props; 
