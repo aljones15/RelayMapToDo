@@ -1,6 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
 
+console.log(process.env);
+
 module.exports = (env) => ({
   entry: {
     app: path.resolve(__dirname, 'src', 'index.jsx'),
@@ -35,6 +37,9 @@ module.exports = (env) => ({
     path: path.join(__dirname, "dist"),
     filename: "[name].js"
   },
+  plugins: [
+    new webpack.EnvironmentPlugin(['MapboxAccessToken'])
+  ],
   node: {
     fs: 'empty',
     net: 'empty',

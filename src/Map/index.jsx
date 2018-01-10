@@ -17,6 +17,10 @@ export class Map extends React.Component {
   constructor(props){
     super(props);
   };
+  componentDidMount() {
+    console.log('did mount');
+    console.log(process.env.MapboxAccessToken);
+  }
   render(){
     return(
      <div id='map'>
@@ -37,7 +41,7 @@ export class Map extends React.Component {
                  return <div>{error.message}</div>;
                } else if (props) {
                  return(
- <ReactMapGL
+                         <ReactMapGL
         width={400}
         height={400}
         latitude={37.7577}
