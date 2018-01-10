@@ -1697,22 +1697,6 @@
         "hoek": "4.2.0"
       }
     },
-    "bops": {
-      "version": "0.0.6",
-      "resolved": "https://registry.npmjs.org/bops/-/bops-0.0.6.tgz",
-      "integrity": "sha1-CC0dVfoB5g29wuvC26N/ZZVUzzo=",
-      "requires": {
-        "base64-js": "0.0.2",
-        "to-utf8": "0.0.1"
-      },
-      "dependencies": {
-        "base64-js": {
-          "version": "0.0.2",
-          "resolved": "https://registry.npmjs.org/base64-js/-/base64-js-0.0.2.tgz",
-          "integrity": "sha1-Ak8Pcq+iW3X5wO5zzU9V7Bvtl4Q="
-        }
-      }
-    },
     "bowser": {
       "version": "1.7.2",
       "resolved": "https://registry.npmjs.org/bowser/-/bowser-1.7.2.tgz",
@@ -5220,14 +5204,6 @@
         "is-property": "1.0.2"
       }
     },
-    "geojson-area": {
-      "version": "0.1.0",
-      "resolved": "https://registry.npmjs.org/geojson-area/-/geojson-area-0.1.0.tgz",
-      "integrity": "sha1-1I2AcILPrfSnjfE0m+UPOL8YlK4=",
-      "requires": {
-        "wgs84": "0.0.0"
-      }
-    },
     "geojson-rewind": {
       "version": "0.3.0",
       "resolved": "https://registry.npmjs.org/geojson-rewind/-/geojson-rewind-0.3.0.tgz",
@@ -5282,26 +5258,6 @@
       "requires": {
         "assert-plus": "1.0.0"
       }
-    },
-    "gl-mat4": {
-      "version": "1.1.4",
-      "resolved": "https://registry.npmjs.org/gl-mat4/-/gl-mat4-1.1.4.tgz",
-      "integrity": "sha1-HolbVYkuVqiWhnq9g30483oXgIY="
-    },
-    "gl-vec2": {
-      "version": "1.0.0",
-      "resolved": "https://registry.npmjs.org/gl-vec2/-/gl-vec2-1.0.0.tgz",
-      "integrity": "sha1-d/zmrpYShW1si2Ic0mHNgoG5xjc="
-    },
-    "gl-vec3": {
-      "version": "1.0.3",
-      "resolved": "https://registry.npmjs.org/gl-vec3/-/gl-vec3-1.0.3.tgz",
-      "integrity": "sha1-EQ/Yl9Byn2OYMHOBVn0JRJQb8is="
-    },
-    "gl-vec4": {
-      "version": "1.0.1",
-      "resolved": "https://registry.npmjs.org/gl-vec4/-/gl-vec4-1.0.1.tgz",
-      "integrity": "sha1-l9loeCgbFLUyy84QF4Xf0cs0CWQ="
     },
     "glob": {
       "version": "7.1.2",
@@ -5429,11 +5385,6 @@
       "resolved": "https://registry.npmjs.org/growly/-/growly-1.3.0.tgz",
       "integrity": "sha1-8QdIy+dq+WS3yWyTxrzCivEgwIE=",
       "dev": true
-    },
-    "hammerjs": {
-      "version": "2.0.8",
-      "resolved": "https://registry.npmjs.org/hammerjs/-/hammerjs-2.0.8.tgz",
-      "integrity": "sha1-BO93hiz/K7edMPdpIJWTAiK/YPE="
     },
     "handle-thing": {
       "version": "1.2.5",
@@ -5845,11 +5796,6 @@
       "resolved": "https://registry.npmjs.org/ignore/-/ignore-3.3.5.tgz",
       "integrity": "sha512-JLH93mL8amZQhh/p6mfQgVBH3M6epNq3DfsXsTSuSrInVjwyYlFE1nv2AgfRCC8PoOhM0jwQ5v8s9LgbK7yGDw==",
       "dev": true
-    },
-    "immutable": {
-      "version": "3.8.1",
-      "resolved": "https://registry.npmjs.org/immutable/-/immutable-3.8.1.tgz",
-      "integrity": "sha1-IAgH8Rqw9ycQ6khVQt4IgHX2jNI="
     },
     "imurmurhash": {
       "version": "0.1.4",
@@ -7924,11 +7870,6 @@
         "webworkify": "1.5.0"
       }
     },
-    "mapbox-gl-supported": {
-      "version": "1.2.0",
-      "resolved": "https://registry.npmjs.org/mapbox-gl-supported/-/mapbox-gl-supported-1.2.0.tgz",
-      "integrity": "sha1-y9NN+JQgbK3amjPI2aRgnya7GYk="
-    },
     "md5.js": {
       "version": "1.3.4",
       "resolved": "https://registry.npmjs.org/md5.js/-/md5.js-1.3.4.tgz",
@@ -8132,14 +8073,6 @@
             "is-plain-object": "2.0.4"
           }
         }
-      }
-    },
-    "mjolnir.js": {
-      "version": "1.0.0",
-      "resolved": "https://registry.npmjs.org/mjolnir.js/-/mjolnir.js-1.0.0.tgz",
-      "integrity": "sha1-iB6qyJbywmk7w59RJ7T6vpn/Vvs=",
-      "requires": {
-        "hammerjs": "2.0.8"
       }
     },
     "mkdirp": {
@@ -9374,90 +9307,6 @@
             "fbjs": "0.8.16",
             "loose-envify": "1.3.1",
             "object-assign": "4.1.1"
-          }
-        }
-      }
-    },
-    "react-map-gl": {
-      "version": "3.1.5",
-      "resolved": "https://registry.npmjs.org/react-map-gl/-/react-map-gl-3.1.5.tgz",
-      "integrity": "sha1-3iVUmmWSdUOwBsfuEG+SradAdYc=",
-      "requires": {
-        "babel-runtime": "6.23.0",
-        "bowser": "1.7.2",
-        "immutable": "3.8.1",
-        "mapbox-gl": "0.40.1",
-        "mjolnir.js": "1.0.0",
-        "prop-types": "15.6.0",
-        "viewport-mercator-project": "4.1.1"
-      },
-      "dependencies": {
-        "concat-stream": {
-          "version": "1.2.1",
-          "resolved": "https://registry.npmjs.org/concat-stream/-/concat-stream-1.2.1.tgz",
-          "integrity": "sha1-81EAtsRjeL+6i2uA+fDQzN8T3GA=",
-          "requires": {
-            "bops": "0.0.6"
-          }
-        },
-        "geojson-rewind": {
-          "version": "0.2.0",
-          "resolved": "https://registry.npmjs.org/geojson-rewind/-/geojson-rewind-0.2.0.tgz",
-          "integrity": "sha1-6lWOnkT/A7hlXQoIt1B43DOhXnk=",
-          "requires": {
-            "concat-stream": "1.2.1",
-            "geojson-area": "0.1.0",
-            "minimist": "0.0.5"
-          },
-          "dependencies": {
-            "minimist": {
-              "version": "0.0.5",
-              "resolved": "https://registry.npmjs.org/minimist/-/minimist-0.0.5.tgz",
-              "integrity": "sha1-16oye87PUY+RBqxrjwA/o7zqhWY="
-            }
-          }
-        },
-        "geojson-vt": {
-          "version": "2.4.0",
-          "resolved": "https://registry.npmjs.org/geojson-vt/-/geojson-vt-2.4.0.tgz",
-          "integrity": "sha1-PBz0RJPzXrTSxwyV2mVQ3mYHLAU="
-        },
-        "mapbox-gl": {
-          "version": "0.40.1",
-          "resolved": "https://registry.npmjs.org/mapbox-gl/-/mapbox-gl-0.40.1.tgz",
-          "integrity": "sha1-FHhbGrO8ekL9JPyzdjfrzsgXxfE=",
-          "requires": {
-            "@mapbox/gl-matrix": "0.0.1",
-            "@mapbox/point-geometry": "0.1.0",
-            "@mapbox/shelf-pack": "3.1.0",
-            "@mapbox/tiny-sdf": "1.1.0",
-            "@mapbox/unitbezier": "0.0.0",
-            "@mapbox/vector-tile": "1.3.0",
-            "@mapbox/whoots-js": "3.0.0",
-            "brfs": "1.4.3",
-            "bubleify": "0.7.0",
-            "csscolorparser": "1.0.3",
-            "earcut": "2.1.3",
-            "geojson-rewind": "0.2.0",
-            "geojson-vt": "2.4.0",
-            "grid-index": "1.0.0",
-            "jsonlint-lines-primitives": "1.6.0",
-            "lodash.isequal": "3.0.4",
-            "mapbox-gl-supported": "1.2.0",
-            "minimist": "0.0.8",
-            "package-json-versionify": "1.0.4",
-            "pbf": "3.1.0",
-            "quickselect": "1.0.1",
-            "rw": "1.3.3",
-            "shuffle-seed": "1.1.6",
-            "sort-object": "0.3.2",
-            "supercluster": "2.3.0",
-            "through2": "2.0.3",
-            "tinyqueue": "1.2.3",
-            "unassertify": "2.1.0",
-            "unflowify": "1.0.1",
-            "vt-pbf": "3.1.0",
-            "webworkify": "1.5.0"
           }
         }
       }
@@ -11225,11 +11074,6 @@
         }
       }
     },
-    "to-utf8": {
-      "version": "0.0.1",
-      "resolved": "https://registry.npmjs.org/to-utf8/-/to-utf8-0.0.1.tgz",
-      "integrity": "sha1-0Xrqcv8vujm55DYBvns/9y4ImFI="
-    },
     "tough-cookie": {
       "version": "2.3.3",
       "resolved": "https://registry.npmjs.org/tough-cookie/-/tough-cookie-2.3.3.tgz",
@@ -11721,17 +11565,6 @@
         "assert-plus": "1.0.0",
         "core-util-is": "1.0.2",
         "extsprintf": "1.3.0"
-      }
-    },
-    "viewport-mercator-project": {
-      "version": "4.1.1",
-      "resolved": "https://registry.npmjs.org/viewport-mercator-project/-/viewport-mercator-project-4.1.1.tgz",
-      "integrity": "sha1-krBhH6AEEEHS81aNo1KaioRgF9A=",
-      "requires": {
-        "gl-mat4": "1.1.4",
-        "gl-vec2": "1.0.0",
-        "gl-vec3": "1.0.3",
-        "gl-vec4": "1.0.1"
       }
     },
     "vlq": {

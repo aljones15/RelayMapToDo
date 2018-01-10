@@ -4,7 +4,6 @@ import GoogleMapReact from 'google-map-react';
 import City from '../City/index.jsx';
 import {QueryRenderer, graphql} from 'react-relay';
 import environment from '../../data/relayEnv';
-import ReactMapGL from 'react-map-gl';
 import MapBox from '../MapBox/index.jsx';
 
 class location {
@@ -18,10 +17,6 @@ export class Map extends React.Component {
   constructor(props){
     super(props);
   };
-  componentDidMount() {
-    console.log('did mount');
-    console.log(process.env.MapboxAccessToken);
-  }
   render(){
     return(
      <div id='map'>

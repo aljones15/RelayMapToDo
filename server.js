@@ -36,7 +36,7 @@ function startAppServer(callback) {
         ]
     },
   plugins: [
-    new webpack.EnvironmentPlugin(['MapboxAccessToken'])
+    new webpack.EnvironmentPlugin({MapboxAccessToken: 'pk.eyJ1IjoibGltaW5hbDE4IiwiYSI6ImNqYzhiZm95dDA0NDkzM2xndjVwd2o5c20ifQ.ECbY-ZvwX_SAwhSxSN2IHQ'})
   ],
     output: {filename: './index.js', path: '/', publicPath: '/src/'}
   });

@@ -1,22 +1,26 @@
 import React from 'react';
 var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
 
-export class MapBox extends React.Component {
- constructor(props) {
-   super(props);
-   this.state = {
 
-   };
- }
+export class MapBox extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+
+     };
+  }
   componentDidMount() {
-    mapboxgl.accessToken = 'pk.eyJ1IjoibGltaW5hbDE4IiwiYSI6ImNqYzhiZm95dDA0NDkzM2xndjVwd2o5c20ifQ.ECbY-ZvwX_SAwhSxSN2IHQ';
-   var map = new mapboxgl.Map({
-     container: 'map_box',
-     style: 'mapbox://styles/mapbox/streets-v10'
-   });
+    mapboxgl.accessToken = process.env.MapboxAccessToken;
+    const mapGL = new mapboxgl.Map({
+      container: 'map_box',
+      style: 'mapbox://styles/mapbox/streets-v10',
+      center: [-74.50, 40],
+      zoom: 9
+    });
   }
   render() {
-    return(<div id='map_box' />);
+    const style = {width: '100%', height: '100%'};
+    return(<div id='map_box' style={style}></div>);
   }
 }
 
