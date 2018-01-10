@@ -5,6 +5,7 @@ import City from '../City/index.jsx';
 import {QueryRenderer, graphql} from 'react-relay';
 import environment from '../../data/relayEnv';
 import ReactMapGL from 'react-map-gl';
+import MapBox from '../MapBox/index.jsx';
 
 class location {
   constructor(lat, lng) {
@@ -41,17 +42,7 @@ export class Map extends React.Component {
                  return <div>{error.message}</div>;
                } else if (props) {
                  return(
-                         <ReactMapGL
-        width={400}
-        height={400}
-        latitude={37.7577}
-        longitude={-122.4376}
-        zoom={8}
-        onViewportChange={(viewport) => {
-          const {width, height, latitude, longitude, zoom} = viewport;
-          // Optionally call `setState` and use the state to update the map.
-        }}
-      />
+                   <MapBox />
                 )
                }
                  return <div>Loading</div>;
