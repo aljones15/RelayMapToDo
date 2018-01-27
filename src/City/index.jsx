@@ -3,6 +3,7 @@ import { style } from './style';
 import ToDoList from '../ToDoList/index.jsx';
 import {graphql, createFragmentContainer } from 'react-relay';
 import { css } from 'aphrodite';
+
 class CityView extends React.Component{
   constructor(props){
     super(props);
@@ -24,7 +25,7 @@ class CityView extends React.Component{
 	<div className={css(style.container) + ' ToDoList'}>
 	  <div className={css(style.CloseBar) + ' ToDoListClose'}
             onClick={this.toggleToDoList.bind(this)}>Close</div>
-          <ToDoList city_id={this.props.item._id} />
+          <ToDoList city_id={this.props.item._id} relay={this.props.relay} />
 	</div>
       );
     } else {

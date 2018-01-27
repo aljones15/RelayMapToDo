@@ -1,5 +1,4 @@
 import { commitMutation, graphql } from 'react-relay';
-import environment from '../../data/relayEnv';
 
 const mutation = graphql`
   mutation CreateToDoMutation($input: ToDoInput!)
@@ -9,8 +8,14 @@ const mutation = graphql`
     }
   }
 `;
-
-export default function AddToDo(city_id, text) {
+// pass the env with  this.props.relay.environment
+/**
+ * AddToDo - adds a to do
+ * @param {number} city_id - the cities id
+ * @param {string} text - the to do description
+ * @param {Object} env - the env available from relay
+*/
+export default function AddToDo(city_id, text, env) {
   const variables = {
     input: {
       city_id: city_id,
@@ -18,7 +23,7 @@ export default function AddToDo(city_id, text) {
     }
   };
   commitMutation(
-    environment,
+    env,
     {
       mutation,
       variables,

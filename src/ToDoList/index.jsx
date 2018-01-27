@@ -183,10 +183,10 @@ const ToDoList = createPaginationContainer(
     query: rootQuery },
 );
 
-const queryRenderer = ({city_id}) => {
+const queryRenderer = ({city_id, relay}) => {
   return(
     <QueryRenderer
-      environment={environment}
+      environment={relay.environment}
       query={rootQuery}
       variables={{cityID: city_id, count:5, cursor: null}}
            render={

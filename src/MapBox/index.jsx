@@ -23,13 +23,14 @@ export class MapBox extends React.Component {
   }
   /**
  * initMap - inits the map box map
+ * the original map box url mapbox://styles/mapbox/streets-v10
  */
   initMap = () => {
     this.mapGL = new mapboxgl.Map({
       container: 'map_box',
-      style: 'mapbox://styles/mapbox/streets-v10',
-      center: [-74.50, 40],
-      zoom: 9
+      style: 'mapbox://styles/liminal18/cjcw24yon11582rqywpf1dd5a',
+      center: [101, 14],
+      zoom: 1
     });
     this.mapGL.doubleClickZoom.disable();
   }

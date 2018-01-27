@@ -36,28 +36,27 @@ export class Map extends React.Component {
                if (error) {
                  return <div>{error.message}</div>;
                } else if (props) {
-                 const markers = [{
-                    "type": "Feature",
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [-77.03238901390978, 38.913188059745586]
+                 console.log('map props from relay');
+                 console.log(props);
+                 const makeMarker = (coords, title)=> ({
+                   "type": "Feature",
+                   "geometry": {
+                      "type": "Point",
+                      "coordinates": coords
                     },
                     "properties": {
-                        "title": "Mapbox DC",
-                        "icon": "star"
+                      "title": title,
+                      "icon": "star"
                     }
-                }, {
-                    "type": "Feature",
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [-122.414, 37.776]
-                    },
-                    "properties": {
-                        "title": "Mapbox SF",
-                        "icon": "star"
-                    }
-                }];
-                 return(
+                 });
+                 const markers = [
+                   makeMarker([-77.03238901390978, 38.913188059745586], 'Mapbox DC'),
+                   makeMarker([-122.414, 37.776], 'Mapbox SF'),
+                   makeMarker([100, 13], 'Bangkok'),
+                   makeMarker([103,2], 'Singapore'),
+                   makeMarker([114,22], 'Hong Kong')
+                 ];
+                return(
                    <MapBox markers={markers} />
                 )
                }
