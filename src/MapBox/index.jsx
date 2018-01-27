@@ -30,7 +30,7 @@ export class MapBox extends React.Component {
       container: 'map_box',
       style: 'mapbox://styles/liminal18/cjcw24yon11582rqywpf1dd5a',
       center: [101, 14],
-      zoom: 1
+      zoom: 2
     });
     this.mapGL.doubleClickZoom.disable();
   }
@@ -41,11 +41,11 @@ export class MapBox extends React.Component {
     this.mapGL.removeLayer(markerLayer);
   }
   mapClick = ({point}) => {
-      console.log(point);
       const options = { layers: [markerLayer]};
       const offset = 15;
       const near = [[point.x - offset, point.y - offset],[point.x + offset, point.y + offset]];
       const features = this.mapGL.queryRenderedFeatures(near, options);
+      console.log(features);
   }
   /**
  * adds the markers layer to the map
@@ -68,6 +68,9 @@ export class MapBox extends React.Component {
          "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
          "text-offset": [0, 0.6],
          "text-anchor": "top"
+       },
+       "paint": {
+         
        }
     };
     this.mapGL.addLayer(layer);
