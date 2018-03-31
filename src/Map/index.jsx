@@ -1,6 +1,5 @@
 import React from 'react';
 import MapContainer from './style';
-import GoogleMapReact from 'google-map-react';
 import City from '../City/index.jsx';
 import { QueryRenderer, graphql } from 'react-relay';
 import environment from '../../data/relayEnv';
