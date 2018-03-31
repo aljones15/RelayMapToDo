@@ -9,6 +9,8 @@ export const style = StyleSheet.create({
     backgroundColor: 'rgba(50,50,50,0.5)',
     color: '#FFFFFF',
     padding: '5px',
-    height: '25px'
-  }
+    height: '25px',
+  },
 });
+
+export default style;

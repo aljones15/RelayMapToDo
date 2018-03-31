@@ -2,7 +2,7 @@
 
 exports[`ToDo Should match a snapshot 1`] = `
 <li
-  className="ToDoContainer_gfjdxk"
+  className="test_class_name"
 >
   1
    | 

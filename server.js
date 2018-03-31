@@ -4,8 +4,8 @@ import graphQLHTTP from 'express-graphql';
 import path from 'path';
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
-import {clean} from 'require-clean';
-import {exec} from 'child_process';
+import { clean } from 'require-clean';
+import { exec } from 'child_process';
 
 const APP_PORT = 3000;
 const GRAPHQL_PORT = 8080;
@@ -23,28 +23,32 @@ function startAppServer(callback) {
           exclude: /node_modules/,
           loader: 'babel-loader',
           test: /\.(js|jsx)?$/,
-        }],
-        rules: [
-          {
+        },
+      ],
+      rules: [
+        {
           test: /\.jsx$/,
           exclude: /(node_modules)/,
           use: {
             loader: 'babel-loader',
-            options: {}
-          }
-          }
-        ]
+            options: {},
+          },
+        },
+      ],
     },
-  plugins: [
-    new webpack.EnvironmentPlugin({MapboxAccessToken: 'pk.eyJ1IjoibGltaW5hbDE4IiwiYSI6ImNqYzhiZm95dDA0NDkzM2xndjVwd2o5c20ifQ.ECbY-ZvwX_SAwhSxSN2IHQ'})
-  ],
-    output: {filename: './index.js', path: '/', publicPath: '/src/'}
+    plugins: [
+      new webpack.EnvironmentPlugin({
+        MapboxAccessToken:
+          'pk.eyJ1IjoibGltaW5hbDE4IiwiYSI6ImNqYzhiZm95dDA0NDkzM2xndjVwd2o5c20ifQ.ECbY-ZvwX_SAwhSxSN2IHQ',
+      }),
+    ],
+    output: { filename: './index.js', path: '/', publicPath: '/src/' },
   });
   appServer = new WebpackDevServer(compiler, {
     contentBase: '/public',
-    proxy: {'/graphql': `http://localhost:${GRAPHQL_PORT}`},
+    proxy: { '/graphql': `http://localhost:${GRAPHQL_PORT}` },
     publicPath: '/src/',
-    stats: {colors: true}
+    stats: { colors: true },
   });
   // Serve static resources
   appServer.use('/', express.static(path.resolve(__dirname, 'public')));
@@ -61,11 +65,14 @@ function startGraphQLServer(callback) {
   clean('./data/schema');
   const { Schema } = require('./data/schema');
   const graphQLApp = express();
-  graphQLApp.use('/', graphQLHTTP({
-    graphiql: true,
-    pretty: true,
-    schema: Schema,
-  }));
+  graphQLApp.use(
+    '/',
+    graphQLHTTP({
+      graphiql: true,
+      pretty: true,
+      schema: Schema,
+    })
+  );
   graphQLServer = graphQLApp.listen(GRAPHQL_PORT, () => {
     console.log(
       `GraphQL server is now running on http://localhost:${GRAPHQL_PORT}`

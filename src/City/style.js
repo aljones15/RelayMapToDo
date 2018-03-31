@@ -1,9 +1,8 @@
-const K_WIDTH = 40;
-const K_HEIGHT = 40;
+/* eslint no-mixed-operators: 0 */
 import { StyleSheet } from 'aphrodite';
 
-// initially any map object has left top corner at lat lng coordinates
-// it's on you to set object origin to 0,0 coordinates
+const K_WIDTH = 40;
+const K_HEIGHT = 40;
 
 export const style = StyleSheet.create({
   Icon: {
@@ -26,10 +25,10 @@ export const style = StyleSheet.create({
     position: 'absolute',
     width: K_WIDTH * 10,
     height: K_HEIGHT * 10,
-    left: (-K_WIDTH * 10) / 2,
-    top: (-K_HEIGHT * 10) / 2,
+    left: -K_WIDTH * 10 / 2,
+    top: -K_HEIGHT * 10 / 2,
     backgroundColor: 'rgba(0,0,0,0.2)',
-    overflow: 'auto'
+    overflow: 'auto',
   },
   Container: {
     display: 'flex',
@@ -39,7 +38,7 @@ export const style = StyleSheet.create({
     height: '100%',
     width: '100%',
     backgroundColor: 'rgba(0,0,0,0.5)',
-    overflow: 'auto'
+    overflow: 'auto',
   },
   CloseBar: {
     display: 'flex',
@@ -55,5 +54,7 @@ export const style = StyleSheet.create({
     color: '#FFFFFF',
     alignItems: 'center',
     justifyContent: 'center',
-  }
+  },
 });
+
+export default style;

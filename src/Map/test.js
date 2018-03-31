@@ -1,9 +1,9 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
+jest.mock('mapbox-gl/dist/mapbox-gl.js', () => 'GoogleMap');
 
-
-jest.mock('google-map-react', () => 'GoogleMap' );
+window.URL.createObjectURL = jest.fn();
 
 import Map from './index';
 
