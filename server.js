@@ -8,7 +8,7 @@ import { clean } from 'require-clean';
 import { exec } from 'child_process';
 
 const APP_PORT = 3000;
-const GRAPHQL_PORT = 8080;
+const GRAPHQL_PORT = 4756;
 
 let graphQLServer;
 let appServer;
