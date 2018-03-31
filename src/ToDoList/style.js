@@ -1,18 +1,18 @@
-import { flatten } from '../../style/';
 import { StyleSheet } from 'aphrodite';
+import { flatten } from '../../style/';
 
 export const style = StyleSheet.create({
   row: {
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   pagBtn: {
     display: 'flex',
     margin: '1rem',
     padding: '1rem',
     flexGrow: 1,
-    flexShrink: 1
+    flexShrink: 1,
   },
   toDo: {
     display: 'flex',
@@ -20,10 +20,10 @@ export const style = StyleSheet.create({
     flexShrink: 1,
     flexDirection: 'column',
     padding: '0px',
-    color: 'white'
+    color: 'white',
   },
   bordered: {
-    border: '1px solid black'
+    border: '1px solid black',
   },
   toDoAdd: {
     display: 'flex',
@@ -32,25 +32,25 @@ export const style = StyleSheet.create({
     height: '30%',
     color: '#FFFFFF',
     flexDirection: 'column',
-    padding: '3px'
+    padding: '3px',
   },
   toDoRow: {
     display: 'flex',
     flexGrow: 1,
     flexShrink: 1,
     padding: '1px',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   selfCenter: {
-   alignSelf: 'center'
-  }
+    alignSelf: 'center',
+  },
 });
 
 export const ToDoRowStyle = {
   display: 'flex',
   flexGrow: 1,
   flexShrink: 1,
-  padding: '1px'
-}
+  padding: '1px',
+};
 
-export const AddToTitle = flatten({alignSelf: 'center'}, ToDoRowStyle);
+export const AddToTitle = flatten({ alignSelf: 'center' }, ToDoRowStyle);

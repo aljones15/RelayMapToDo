@@ -2,7 +2,7 @@
 
 exports[`map should match a snapshot 1`] = `
 <div
-  className="Icon_n7s74m City"
+  className="test_class_name City"
 >
   <img
     onClick={[Function]}
