@@ -21,7 +21,6 @@
   "dependencies": {
     "aphrodite": "^2.1.0",
     "es6-promise": "^4.1.0",
-    "google-map-react": "^0.24.0",
     "graphql": "^0.12.3",
     "graphql-relay": "^0.5.4",
     "isomorphic-fetch":
