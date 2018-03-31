@@ -21,15 +21,15 @@
   "dependencies": {
     "aphrodite": "^2.1.0",
     "es6-promise": "^4.1.0",
-    "graphql": "^0.12.3",
-    "graphql-relay": "^0.5.4",
+    "graphql": "^0.13.2",
+    "graphql-relay": "^0.5.5",
     "isomorphic-fetch":
       "https://registry.npmjs.org/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz",
     "lodash": "^4.17.4",
     "mapbox-gl": "^0.43.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-relay": "^1.4.1"
+    "react-relay": "^1.5.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",

@@ -1,11 +1,11 @@
-import { 
+import {
   FetchToDos,
   AddToDo,
   LikeToDo,
   DislikeToDo,
   FetchCities,
   FetchCity,
-  PaginateToDo
+  PaginateToDo,
 } from './database';
 
 import {
@@ -18,15 +18,17 @@ import {
   GraphQLEnumType,
   GraphQLNonNull,
   GraphQLSchema,
-  GraphQLInputObjectType
+  GraphQLInputObjectType,
 } from 'graphql';
+
+import { nodeDefinitions, globalIdField } from 'graphql-relay';
 
 import _ from 'lodash';
 
 /***
-* graph QL function that maps Queries to functions that fetch the correct obj
-* function return is destructured to all us acces to the interface ani fields
-*/
+ * graph QL function that maps Queries to functions that fetch the correct obj
+ * function return is destructured to all us acces to the interface ani fields
+ */
 
 /*
 const {nodeInterface, nodeField} = nodeDefinitions(
@@ -60,70 +62,72 @@ const Query = new GraphQLObjectType({
   name: 'Query',
   description: 'An array of Cities',
   fields: () => ({
-    cities: { 
+    cities: {
       type: new GraphQLList(City),
-      resolve: () => FetchCities()
+      resolve: () => FetchCities(),
     },
     city: {
       type: City,
       args: {
-        cityID: {type: new GraphQLNonNull(GraphQLInt)}
+        cityID: { type: new GraphQLNonNull(GraphQLInt) },
       },
-      resolve: (source, {cityID}) => FetchCity(cityID)
-    }
-  })
+      resolve: (source, { cityID }) => FetchCity(cityID),
+    },
+  }),
 });
 
 const City = new GraphQLObjectType({
   name: 'City',
   description: 'A city to be used on the map',
   fields: () => ({
-    _id: {type: new GraphQLNonNull(GraphQLInt)},
-    lat: {type: GraphQLFloat},
-    lng: {type: GraphQLFloat},
-    todo:{ 
+    id: globalIdField('City'),
+    _id: { type: new GraphQLNonNull(GraphQLInt) },
+    lat: { type: GraphQLFloat },
+    lng: { type: GraphQLFloat },
+    todo: {
       type: ToDoConnection,
       args: {
-        first: {type: GraphQLInt}, 
-        after: {type: GraphQLString},
-        last: {type: GraphQLInt}, 
-        before: {type: GraphQLString} 
+        first: { type: GraphQLInt },
+        after: { type: GraphQLString },
+        last: { type: GraphQLInt },
+        before: { type: GraphQLString },
       },
-      resolve: ({_id}, {first, after, last, before}) => {
+      resolve: ({ _id }, { first, after, last, before }) => {
         return {
-          id: _id, 
-          first: first, 
-          after: after, 
-          last: last, 
+          id: _id,
+          first: first,
+          after: after,
+          last: last,
           before: before,
-          todos: FetchToDos(_id)
+          todos: FetchToDos(_id),
         };
-      } 
-    }
-  })
+      },
+    },
+  }),
 });
 
 const ToDo = new GraphQLObjectType({
   name: 'ToDo',
   description: 'A To Do for a city',
   fields: () => ({
-    city_id: {type: new GraphQLNonNull(GraphQLInt)},
-    text: {type: GraphQLString},
+    id: globalIdField('ToDo'),
+    city_id: { type: new GraphQLNonNull(GraphQLInt) },
+    text: { type: GraphQLString },
     likes: {
       type: GraphQLInt,
-      resolve: (todo) => todo.likes || 0
+      resolve: todo => todo.likes || 0,
     },
-    _id: {type: new GraphQLNonNull(GraphQLInt)}
-  })
+    _id: { type: new GraphQLNonNull(GraphQLInt) },
+  }),
 });
 
 const ToDoEdge = new GraphQLObjectType({
   name: 'ToDoEdge',
   description: 'To Do Edge',
   fields: () => ({
-    node: {type: ToDo},
-    cursor: {type: new GraphQLNonNull(GraphQLString)}
-  })
+    node: { type: ToDo },
+    cursor: { type: new GraphQLNonNull(GraphQLString) },
+  }),
 });
 
 const ToDoPageInfo = new GraphQLObjectType({
@@ -133,44 +137,45 @@ const ToDoPageInfo = new GraphQLObjectType({
     hasPreviousPage: {
       type: new GraphQLNonNull(GraphQLBoolean),
       args: {
-        first: {type: GraphQLInt}, 
-        after: {type: GraphQLString},
-        last: {type: GraphQLInt}, 
-        before: {type: GraphQLString} 
-      }, 
-      resolve: ({after, todos}) => {
+        first: { type: GraphQLInt },
+        after: { type: GraphQLString },
+        last: { type: GraphQLInt },
+        before: { type: GraphQLString },
+      },
+      resolve: ({ after, todos }) => {
         const current = todos.find(t => t._id == after);
         const index = todos.indexOf(current);
         const before = todos.slice(0, index);
         return before.length > 0;
-      }
+      },
     },
     hasNextPage: {
       type: new GraphQLNonNull(GraphQLBoolean),
       args: {
-        first: {type: GraphQLInt}, 
-        after: {type: GraphQLString},
-        last: {type: GraphQLInt}, 
-        before: {type: GraphQLString} 
-      }, 
-      resolve: (args) => {
+        first: { type: GraphQLInt },
+        after: { type: GraphQLString },
+        last: { type: GraphQLInt },
+        before: { type: GraphQLString },
+      },
+      resolve: args => {
         const current = args.todos.find(t => t._id == args.id);
         const index = args.todos.indexOf(current) + args.first;
         const after = args.todos.slice(index, index + args.first);
         return after.length > 0;
-      } 
+      },
     },
     startCursor: {
       type: new GraphQLNonNull(GraphQLString),
-      resolve: ({todos}) => todos[0] ? todos[0]._id : 1
+      resolve: ({ todos }) => (todos[0] ? todos[0]._id : 1),
     },
     endCursor: {
       type: new GraphQLNonNull(GraphQLString),
-      resolve: ({todos}) => {
-        const end = todos.length - 1; 
-        return todos[end] ?  todos[end]._id : 1; }
-    }
-  }) 
+      resolve: ({ todos }) => {
+        const end = todos.length - 1;
+        return todos[end] ? todos[end]._id : 1;
+      },
+    },
+  }),
 });
 
 const ToDoConnection = new GraphQLObjectType({
@@ -179,31 +184,31 @@ const ToDoConnection = new GraphQLObjectType({
   fields: () => ({
     edges: {
       type: new GraphQLList(ToDoEdge),
-      resolve: (args) => {
-        if(args.first){
-          return PaginateToDo(args.after, args.first, args.id); 
+      resolve: args => {
+        if (args.first) {
+          return PaginateToDo(args.after, args.first, args.id);
         }
-        if(args.last){
-          throw 'PAGINATE BEFORE NOT IMPLEMENTED YET'; 
+        if (args.last) {
+          throw 'PAGINATE BEFORE NOT IMPLEMENTED YET';
         }
         return [];
-      }
-   },
+      },
+    },
     pageInfo: {
       type: ToDoPageInfo,
-      resolve: (one) => {
+      resolve: one => {
         return one;
-      }
-    }
-  })
+      },
+    },
+  }),
 });
 
 const ToDoInput = new GraphQLInputObjectType({
   name: 'ToDoInput',
   fields: {
-    city_id: {type: new GraphQLNonNull(GraphQLInt)},
-    text: {type: GraphQLString},
-  }
+    city_id: { type: new GraphQLNonNull(GraphQLInt) },
+    text: { type: GraphQLString },
+  },
 });
 
 const Mutation = new GraphQLObjectType({
@@ -213,16 +218,16 @@ const Mutation = new GraphQLObjectType({
     createToDo: {
       type: ToDo,
       args: {
-        input: {type: ToDoInput}
+        input: { type: ToDoInput },
       },
       resolve: (source, args) => {
         return AddToDo(args);
-      }
-    }
-  })
+      },
+    },
+  }),
 });
 
 export const Schema = new GraphQLSchema({
   query: Query,
-  mutation: Mutation
+  mutation: Mutation,
 });

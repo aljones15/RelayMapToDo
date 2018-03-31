@@ -2,6 +2,10 @@
 A city to be used on the map
 """
 type City {
+  """
+  The ID of an object
+  """
+  id: ID!
   _id: Int!
   lat: Float
   lng: Float
@@ -27,6 +31,10 @@ type Query {
 A To Do for a city
 """
 type ToDo {
+  """
+  The ID of an object
+  """
+  id: ID!
   city_id: Int!
   text: String
   likes: Int

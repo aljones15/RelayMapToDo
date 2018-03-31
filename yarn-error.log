@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn test -- ./src/City/test.js
+  /usr/local/bin/node /usr/local/bin/yarn relay
 
 PATH: 
   /nix/store/0n28spn858i83ca5vkjrzfkj8jsh3axd-libxslt-1.1.29-dev/bin:/nix/store/4rvhg8k4b3k4hzkynypw7ah6jz9hcn5y-libxslt-1.1.29-bin/bin:/nix/store/1rbgq8sf04y9aznv5sj7dmn9ancp16rm-python-2.7.14/bin:/nix/store/84ijk0cqvxxp3kh8sfsss919sysiqfjj-python2.7-pip-9.0.1/bin:/nix/store/7g686z7xx16g4cf262l6p2hnnhxv6pby-python2.7-setuptools-36.6.0/bin:/nix/store/rmhw6al5f82a906g89mpyz4jkyqximss-clang-wrapper-4.0.1/bin:/nix/store/f5gyrk02lis18m4qc7hcizlc19r35m4w-clang-4.0.1/bin:/nix/store/qy9ln092gwd9d5p1wjq78315ypgxlbjj-cctools-binutils-darwin/bin:/nix/store/6s31z3ghhrhwahf6gr9641c895bqhkwx-coreutils-8.28/bin:/nix/store/6s31z3ghhrhwahf6gr9641c895bqhkwx-coreutils-8.28/bin:/nix/store/65blhd9p56w8an88ydrbfbyycp69ivp9-findutils-4.6.0/bin:/nix/store/c97ndbs6wcfkliyb0xc0ljvpa5hsm0ia-diffutils-3.6/bin:/nix/store/8w438n158r8ly9hfa64qzp979261gp35-gnused-4.4/bin:/nix/store/ljcx5cscx3jlw6hldwgwzr69csw0chlf-gnugrep-3.1/bin:/nix/store/rzd2wpx3bajw82rkkmxx0mhjv2wrffn2-gawk-4.1.4/bin:/nix/store/qvd7vgl517ml0d7w0d0z27r4kg6vy5ik-gnutar-1.29/bin:/nix/store/904phbbg2h6xxsk55z6ag8yia8naak3d-gzip-1.8/bin:/nix/store/fv5lk2fw1s2kx3nkd2mbw5x3akq6vv7a-bzip2-1.0.6.0.1-bin/bin:/nix/store/x7wak3qj0bq6fsn869il5g24s0rxw80r-gnumake-4.2.1/bin:/nix/store/g6l32ncr8vlpprlmv9kgr4qksx929cbj-bash-4.4-p12/bin:/nix/store/pipalqy70vzawfzvc9qn1b2mjwyr6shv-patch-2.7.5/bin:/nix/store/jk2yddh9vj3bn0mcmqrz0jmbpr29dyh6-xz-5.2.3-bin/bin:/Users/andrewjones/.nix-profile/bin:/Users/andrewjones/.nix-profile/sbin:/Users/andrewjones/.nix-profile/lib/kde4/libexec:/nix/var/nix/profiles/default/bin:/nix/var/nix/profiles/default/sbin:/nix/var/nix/profiles/default/lib/kde4/libexec:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/andrewjones/Programs/sonarlint-cli-2.1.0.566/bin:/usr/local/mariadb/server/bin
@@ -36,7 +36,6 @@ npm manifest:
     "dependencies": {
       "aphrodite": "^2.1.0",
       "es6-promise": "^4.1.0",
-      "google-map-react": "^0.24.0",
       "graphql": "^0.12.3",
       "graphql-relay": "^0.5.4",
       "isomorphic-fetch": "https://registry.npmjs.org/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz",
@@ -44,7 +43,7 @@ npm manifest:
       "mapbox-gl": "^0.43.0",
       "react": "^16.2.0",
       "react-dom": "^16.2.0",
-      "react-relay": "^1.4.1"
+      "react-relay": "^1.5.0"
     },
     "devDependencies": {
       "babel-cli": "^6.24.1",
@@ -2794,7 +2793,7 @@ Lockfile:
       d "1"
       es5-ext "~0.10.14"
   
-  eventemitter3@1.x.x, eventemitter3@^1.1.0:
+  eventemitter3@1.x.x:
     version "1.2.0"
     resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-1.2.0.tgz#1c86991d816ad1e504750e73874224ecf3bec508"
   
@@ -3047,7 +3046,7 @@ Lockfile:
       setimmediate "^1.0.5"
       ua-parser-js "^0.7.9"
   
-  fbjs@^0.8.3, fbjs@^0.8.9:
+  fbjs@^0.8.9:
     version "0.8.12"
     resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.12.tgz#10b5d92f76d45575fd63a217d4ea02bea2f8ed04"
     dependencies:
@@ -3378,15 +3377,6 @@ Lockfile:
       object-assign "^4.0.1"
       pify "^2.0.0"
       pinkie-promise "^2.0.0"
-  
-  google-map-react@^0.24.0:
-    version "0.24.0"
-    resolved "https://registry.yarnpkg.com/google-map-react/-/google-map-react-0.24.0.tgz#7276546d303c5ae837963f8bc1386b75f1aa2c60"
-    dependencies:
-      eventemitter3 "^1.1.0"
-      fbjs "^0.8.3"
-      point-geometry "0.0.0"
-      scriptjs "^2.5.7"
   
   graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.4:
     version "4.1.11"
@@ -5625,10 +5615,6 @@ Lockfile:
     version "1.1.0"
     resolved "https://registry.yarnpkg.com/pn/-/pn-1.1.0.tgz#e2f4cef0e219f463c179ab37463e4e1ecdccbafb"
   
-  point-geometry@0.0.0:
-    version "0.0.0"
-    resolved "https://registry.yarnpkg.com/point-geometry/-/point-geometry-0.0.0.tgz#6fcbcad7a803b6418247dd6e49c2853c584daff7"
-  
   portfinder@^1.0.9:
     version "1.0.13"
     resolved "https://registry.yarnpkg.com/portfinder/-/portfinder-1.0.13.tgz#bb32ecd87c27104ae6ee44b5a3ccbf0ebb1aede9"
@@ -5876,7 +5862,7 @@ Lockfile:
       object-assign "^4.1.1"
       prop-types "^15.6.0"
   
-  react-relay@^1.4.1:
+  react-relay@^1.5.0:
     version "1.5.0"
     resolved "https://registry.yarnpkg.com/react-relay/-/react-relay-1.5.0.tgz#c985a4b9728c7bcbe9d3044511608be4c104a44b"
     dependencies:
@@ -6336,10 +6322,6 @@ Lockfile:
   sax@^1.2.4:
     version "1.2.4"
     resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
-  
-  scriptjs@^2.5.7:
-    version "2.5.8"
-    resolved "https://registry.yarnpkg.com/scriptjs/-/scriptjs-2.5.8.tgz#d0c43955c2e6bad33b6e4edf7b53b8965aa7ca5f"
   
   seedrandom@^2.4.2:
     version "2.4.3"
@@ -7594,9 +7576,9 @@ Lockfile:
 
 Trace: 
   Error: Command failed.
-  Exit code: 1
+  Exit code: 100
   Command: sh
-  Arguments: -c jest --config jest.config.js --forceExit ./src/City/test.js
+  Arguments: -c relay-compiler --src ./src --schema ./data/schema.graphql --extensions jsx
   Directory: /Users/andrewjones/Programs/react/RelayMapToDo
   Output:
   
