@@ -25,7 +25,7 @@
     "graphql-relay": "^0.5.5",
     "isomorphic-fetch":
       "https://registry.npmjs.org/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.15",
     "mapbox-gl": "^0.43.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -45,7 +45,7 @@
     "compress": "^0.99.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "eslint": "^3.19.0",
+    "eslint": "^6.8.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
